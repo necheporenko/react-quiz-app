@@ -1,5 +1,15 @@
-import React from "react";
+import React, { Component } from "react";
 
-const Test = () => <h2>Test</h2>;
+class Test extends Component {
+  render() {
+    return (
+      <div className="tests">
+        <div>
+          <h2 className="tests__title">Check yourself</h2>
+        </div>
+      </div>
+    );
+  }
+}
 
 export default Test;

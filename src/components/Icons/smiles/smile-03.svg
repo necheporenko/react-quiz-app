@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="35px" height="35px" viewBox="0 0 35 35" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
+    <title>51D1D278-F036-47E1-BB59-D01425042318</title>
+    <desc>Created with sketchtool.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Smiles" transform="translate(-165.000000, -46.000000)">
+            <g id="Group-2-Copy" transform="translate(38.000000, 38.000000)">
+                <g id="neutral" transform="translate(127.000000, 8.000000)">
+                    <circle id="Oval" fill="#FFCA28" cx="17.5" cy="17.5" r="17.5"></circle>
+                    <g id="Group" transform="translate(9.000000, 12.000000)" fill="#6D4C41">
+                        <ellipse id="Oval" cx="2.25" cy="2.14285714" rx="2.25" ry="2.14285714"></ellipse>
+                        <ellipse id="Oval" cx="15.75" cy="2.14285714" rx="2.25" ry="2.14285714"></ellipse>
+                        <path d="M14.625,15 L3.375,15 C2.754,15 2.25,14.52 2.25,13.9285714 C2.25,13.3371429 2.754,12.8571429 3.375,12.8571429 L14.625,12.8571429 C15.246,12.8571429 15.75,13.3371429 15.75,13.9285714 C15.75,14.52 15.246,15 14.625,15 Z" id="Path"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
