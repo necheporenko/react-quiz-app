@@ -33,8 +33,69 @@ body {
   letter-spacing: 0.75px;
   line-height: 16px;
   text-align: center;
-  text-transform: uppercase;
   margin: 0 auto;
+}
+
+.wrapper__modal {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding-top: 20px;
+
+  button {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+
+  .arrow {
+    position: absolute;
+    top: -31px;
+    right: -10px;
+    width: 14px;
+    height: 14px;
+    transform: rotate(45deg);
+    background: #fff;
+  }
+
+  .close {
+    position: absolute;
+    right: -15px;
+    top: -15px;
+    cursor: pointer;
+  }
+
+  label {
+    color: rgba(0, 0, 0, 0.9);
+    font-family: "Proxima Nova", sans-serif;
+    font-size: 14px;
+    line-height: 17px;
+    padding-bottom: 13px;
+  }
+
+  textarea {
+    border: 1px solid #979797;
+    border-radius: 8px;
+    color: rgba(0, 0, 0, 0.54);
+    font-family: "Proxima Nova", sans-serif;
+    font-size: 12px;
+    line-height: 15px;
+    padding: 14px 12px;
+    min-height: 130px;
+  }
+
+  .send {
+    align-self: flex-end;
+    border-radius: 8px;
+    background-color: #cccccc;
+    color: #ffffff;
+    outline: 0;
+    border: 0;
+    font-size: 16px;
+    line-height: 20px;
+    height: 28px;
+    width: 90px;
+    margin: 20px 0 0 0;
+  }
 }
 /* End Components */
 

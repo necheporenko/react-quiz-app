@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Row, Progress } from "antd";
+import { Row, Progress, Popover, Modal } from "antd";
 import Icon from "../../components/Icons";
 import { ReactComponent as IconClose } from "../../components/Icons/actions/close.svg";
 import { ReactComponent as IconCloseCircle } from "../../components/Icons/actions/close-circle.svg";
@@ -9,10 +9,35 @@ import { ReactComponent as IconSmile3 } from "../../components/Icons/smiles/smil
 import { ReactComponent as IconSmile4 } from "../../components/Icons/smiles/smile-04.svg";
 import { ReactComponent as IconSmile5 } from "../../components/Icons/smiles/smile-05.svg";
 
-const TestsList = () => (
+const ModalApp = ({ modalVisible, setModalVisible }) => (
+  <Modal
+    visible={modalVisible}
+    onOk={() => setModalVisible(false)}
+    onCancel={() => setModalVisible(false)}
+    closable={false}
+    footer={null}
+  >
+    <div className="wrapper__modal">
+      <div className="arrow" />
+      <IconClose className="close" onClick={() => setModalVisible(false)} />
+      <button className="btn">Irrelevant question</button>
+      <button className="btn">Didn’t understand the question</button>
+      <button className="btn">Stupid question</button>
+
+      <label htmlFor="else">Something else: </label>
+      <textarea id="else" name="else_answer" placeholder="Write your answer" />
+
+      <button className="send" onClick={() => setModalVisible(false)}>
+        Send
+      </button>
+    </div>
+  </Modal>
+);
+
+const TestsList = ({ showTest }) => (
   <div className="tests">
     <h2 className="tests__title">Check yourself</h2>
-    <div className="tests__content">
+    <div className="tests__content" onClick={() => showTest(true)}>
       <div className="tests__content__item">
         <Icon name="fire" finished />
         <div className="small-icon">
@@ -116,7 +141,7 @@ const TestsList = () => (
   </div>
 );
 
-const CurrentTest = () => (
+const CurrentTest = ({ modalVisible, setModalVisible, showTest }) => (
   <div className="test">
     <Row
       className="test__header"
@@ -124,7 +149,7 @@ const CurrentTest = () => (
       align="middle"
       justify="space-between"
     >
-      <div className="test__header__close">
+      <div className="test__header__close" onClick={() => showTest(false)}>
         <IconClose />
       </div>
       <div className="test__header__progressbar">
@@ -134,7 +159,11 @@ const CurrentTest = () => (
     <div className="test__wrapper__content">
       <div className="test__question">
         <div className="test__question--close">
-          <IconCloseCircle />
+          <IconCloseCircle onClick={() => setModalVisible(true)} />
+          <ModalApp
+            modalVisible={modalVisible}
+            setModalVisible={setModalVisible}
+          />
         </div>
         <p>My Travel Plan are ussially well thought our.</p>
       </div>
@@ -155,7 +184,7 @@ const CurrentTest = () => (
       <div className="test__answer">
         <div>
           <p>Definitely YES!</p>
-          <button className="btn">answered</button>
+          <button className="btn">ANSWERED</button>
         </div>
       </div>
     </div>
@@ -163,11 +192,34 @@ const CurrentTest = () => (
 );
 
 class Test extends Component {
+  state = {
+    modalVisible: false,
+    openTest: false
+  };
+
+  setModalVisible = state => {
+    console.log(1);
+    this.setState({ modalVisible: state });
+  };
+
+  showTest = state => {
+    console.log(1);
+    this.setState({ openTest: state });
+  };
+
   render() {
+    const { modalVisible, openTest } = this.state;
     return (
       <div className="wrapper__tests">
-        {/* <TestsList /> */}
-        <CurrentTest />
+        {openTest ? (
+          <CurrentTest
+            setModalVisible={this.setModalVisible}
+            modalVisible={modalVisible}
+            showTest={this.showTest}
+          />
+        ) : (
+          <TestsList showTest={this.showTest} />
+        )}
       </div>
     );
   }

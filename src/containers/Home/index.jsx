@@ -25,7 +25,7 @@ const Home = () => (
       </p>
 
       <Link to="/test" className="home__content--btn">
-        <button className="btn">take a free test</button>
+        <button className="btn">TAKE A FREE TEST</button>
       </Link>
     </div>
   </Row>
