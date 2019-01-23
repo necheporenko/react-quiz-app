@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Row } from "antd";
 import { ReactComponent as Logo } from "../../components/Icons/logo.svg";
 
@@ -23,7 +24,9 @@ const Home = () => (
         of technology.
       </p>
 
-      <button className="btn">take a free test</button>
+      <Link to="/test" className="home__content--btn">
+        <button className="btn">take a free test</button>
+      </Link>
     </div>
   </Row>
 );
