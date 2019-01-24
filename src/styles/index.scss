@@ -100,7 +100,8 @@ body {
 /* End Components */
 
 .app__content {
-  height: calc(100vh - 50px);
+  height: calc(100% - 50px);
+  min-height: calc(100vh - 50px);
 }
 
 .navigation__app {
