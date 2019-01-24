@@ -21,9 +21,15 @@ const ModalApp = ({ modalVisible, setModalVisible }) => (
   >
     <div className="wrapper__modal">
       <IconClose className="close" onClick={() => setModalVisible(false)} />
-      <button className="btn">Irrelevant question</button>
-      <button className="btn">Didn’t understand the question</button>
-      <button className="btn">Stupid question</button>
+      <button className="btn" onClick={() => setModalVisible(false)}>
+        Irrelevant question
+      </button>
+      <button className="btn" onClick={() => setModalVisible(false)}>
+        Didn’t understand the question
+      </button>
+      <button className="btn" onClick={() => setModalVisible(false)}>
+        Stupid question
+      </button>
 
       <label htmlFor="else">Something else: </label>
       <textarea id="else" name="else_answer" placeholder="Write your answer" />
