@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import update from "immutability-helper";
-import { Row, Progress, Modal, message } from "antd";
+import { Row, Progress, Modal } from "antd";
 import Icon from "../../components/Icons";
 import { ReactComponent as IconClose } from "../../components/Icons/actions/close.svg";
 import { ReactComponent as IconCloseCircle } from "../../components/Icons/actions/close-circle.svg";
@@ -9,141 +9,108 @@ import { ReactComponent as IconSmile2 } from "../../components/Icons/smiles/smil
 import { ReactComponent as IconSmile3 } from "../../components/Icons/smiles/smile-03.svg";
 import { ReactComponent as IconSmile4 } from "../../components/Icons/smiles/smile-04.svg";
 import { ReactComponent as IconSmile5 } from "../../components/Icons/smiles/smile-05.svg";
+import TEST_LIST from "./testsList";
 
-const ModalApp = ({ modalVisible, setModalVisible }) => (
-  <Modal
-    visible={modalVisible}
-    centered
-    onOk={() => setModalVisible(false)}
-    onCancel={() => setModalVisible(false)}
-    closable={false}
-    footer={null}
-  >
-    <div className="wrapper__modal">
-      <IconClose className="close" onClick={() => setModalVisible(false)} />
-      <button className="btn" onClick={() => setModalVisible(false)}>
-        Irrelevant question
-      </button>
-      <button className="btn" onClick={() => setModalVisible(false)}>
-        Didn’t understand the question
-      </button>
-      <button className="btn" onClick={() => setModalVisible(false)}>
-        Stupid question
-      </button>
+class ModalApp extends Component {
+  state = {
+    message: ""
+  };
 
-      <label htmlFor="else">Something else: </label>
-      <textarea id="else" name="else_answer" placeholder="Write your answer" />
+  handleChange = event => {
+    this.setState({ message: event.target.value });
+  };
 
-      <button className="send" onClick={() => setModalVisible(false)}>
-        Send
-      </button>
-    </div>
-  </Modal>
-);
+  render() {
+    const { modalVisible, setModalVisible, giveAnswer } = this.props;
+    const { message } = this.state;
+    return (
+      <Modal
+        visible={modalVisible}
+        centered
+        onOk={() => setModalVisible(false)}
+        onCancel={() => setModalVisible(false)}
+        closable={false}
+        footer={null}
+      >
+        <div className="wrapper__modal">
+          <IconClose className="close" onClick={() => setModalVisible(false)} />
+          <button
+            className="btn"
+            onClick={() => {
+              giveAnswer("Irrelevant question");
+              setModalVisible(false);
+            }}
+          >
+            Irrelevant question
+          </button>
+          <button
+            className="btn"
+            onClick={() => {
+              giveAnswer("Didn’t understand the question");
+              setModalVisible(false);
+            }}
+          >
+            Didn’t understand the question
+          </button>
+          <button
+            className="btn"
+            onClick={() => {
+              giveAnswer("Stupid question");
+              setModalVisible(false);
+            }}
+          >
+            Stupid question
+          </button>
 
-const TestsList = ({ showTest }) => (
+          <label htmlFor="else">Something else: </label>
+          <textarea
+            id="else"
+            name="else_answer"
+            placeholder="Write your answer"
+            value={message}
+            onChange={this.handleChange}
+          />
+
+          <button
+            className="send"
+            onClick={() => {
+              message && giveAnswer(message);
+              message && setModalVisible(false);
+            }}
+            style={{ backgroundColor: message && "#00aff9" }}
+          >
+            Send
+          </button>
+        </div>
+      </Modal>
+    );
+  }
+}
+
+const TestsList = ({ showTest, tests }) => (
   <div className="tests">
     <h2 className="tests__title">Check yourself</h2>
-    <div className="tests__content" onClick={() => showTest(true)}>
-      <div className="tests__content__item">
-        <Icon name="wind" finished />
-        <div className="small-icon">
-          <Icon name="xsWind" finished />
+    <div className="tests__content">
+      {tests.map(test => (
+        <div
+          className="tests__content__item"
+          key={test.id}
+          onClick={() => test.status === "active" && showTest(true, test.id)}
+        >
+          <Icon
+            name={test.icon}
+            finished={test.status === "finished" || false}
+            active={test.status === "active" || false}
+          />
+          <div className="small-icon">
+            <Icon
+              name={test.iconXs}
+              finished={test.status === "finished" || false}
+              active={test.status === "active" || false}
+            />
+          </div>
         </div>
-      </div>
-      <div className="tests__content__item">
-        <Icon name="fire" finished />
-        <div className="small-icon">
-          <Icon name="xsWind" finished />
-        </div>
-      </div>
-      <div className="tests__content__item">
-        <Icon name="water" finished />
-        <div className="small-icon">
-          <Icon name="xsWind" finished />
-        </div>
-      </div>
-      <div className="tests__content__item">
-        <Icon name="earth" finished />
-        <div className="small-icon">
-          <Icon name="xsWind" finished />
-        </div>
-      </div>
-
-      <div className="tests__content__item">
-        <Icon name="wind" active />
-        <div className="small-icon">
-          <Icon name="xsFire" active />
-        </div>
-      </div>
-      <div className="tests__content__item">
-        <Icon name="fire" active />
-        <div className="small-icon">
-          <Icon name="xsFire" active />
-        </div>
-      </div>
-      <div className="tests__content__item">
-        <Icon name="water" active />
-        <div className="small-icon">
-          <Icon name="xsFire" active />
-        </div>
-      </div>
-      <div className="tests__content__item">
-        <Icon name="earth" active />
-        <div className="small-icon">
-          <Icon name="xsFire" active />
-        </div>
-      </div>
-
-      <div className="tests__content__item">
-        <Icon name="wind" />
-        <div className="small-icon">
-          <Icon name="xsWater" />
-        </div>
-      </div>
-      <div className="tests__content__item">
-        <Icon name="fire" />
-        <div className="small-icon">
-          <Icon name="xsWater" />
-        </div>
-      </div>
-      <div className="tests__content__item">
-        <Icon name="water" />
-        <div className="small-icon">
-          <Icon name="xsWater" />
-        </div>
-      </div>
-      <div className="tests__content__item">
-        <Icon name="earth" />
-        <div className="small-icon">
-          <Icon name="xsWater" />
-        </div>
-      </div>
-
-      <div className="tests__content__item">
-        <Icon name="wind" />
-        <div className="small-icon">
-          <Icon name="xsEarth" />
-        </div>
-      </div>
-      <div className="tests__content__item">
-        <Icon name="fire" />
-        <div className="small-icon">
-          <Icon name="xsEarth" />
-        </div>
-      </div>
-      <div className="tests__content__item">
-        <Icon name="water" />
-        <div className="small-icon">
-          <Icon name="xsEarth" />
-        </div>
-      </div>
-      <div className="tests__content__item">
-        <Icon name="earth" />
-        <div className="small-icon">
-          <Icon name="xsEarth" />
-        </div>
-      </div>
+      ))}
     </div>
   </div>
 );
@@ -201,9 +168,9 @@ const CurrentTest = ({
           <ModalApp
             modalVisible={modalVisible}
             setModalVisible={setModalVisible}
+            giveAnswer={giveAnswer}
           />
         </div>
-        {console.log(activeQuestion)}
         <p>
           {questions[activeQuestion]
             ? questions[activeQuestion].question
@@ -270,12 +237,14 @@ class Test extends Component {
     modalVisible: false,
     openTest: false,
     activeAnswer: "",
+    activeTestID: null,
     activeQuestion: 0,
-    questions: QUESTIONS
+    questions: [],
+    tests: TEST_LIST
   };
 
   giveAnswer = answer => {
-    const { activeQuestion, questions } = this.state;
+    const { activeTestID, activeQuestion, questions, tests } = this.state;
 
     this.setState(
       {
@@ -283,16 +252,39 @@ class Test extends Component {
           [activeQuestion]: { answer: { $set: answer } }
         }),
         activeQuestion: activeQuestion + 1,
-        activeAnswer: ""
+        activeAnswer: "",
+        tests: update(tests, {
+          [activeTestID - 1]: {
+            questions: { [activeQuestion]: { answer: { $set: answer } } }
+          }
+        })
       },
       () => {
         if (activeQuestion === questions.length - 1) {
-          message.success("Well done, test completed!", 2.5).then(() =>
-            this.setState({
+          const updatedTest = update(tests, {
+            [activeTestID - 1]: {
+              status: { $set: "finished" }
+            }
+          });
+
+          this.setState(
+            {
               questions: QUESTIONS,
               activeQuestion: 0,
-              openTest: false
-            })
+              openTest: false,
+              tests: updatedTest
+            },
+            () => {
+              if (tests[activeTestID + 3] && tests[activeTestID + 3].id) {
+                this.setState({
+                  tests: update(updatedTest, {
+                    [activeTestID + 3]: {
+                      status: { $set: "active" }
+                    }
+                  })
+                });
+              }
+            }
           );
         }
       }
@@ -308,15 +300,24 @@ class Test extends Component {
 
     this.setState(
       { activeAnswer: answer },
-      () =>
-        !questions[activeQuestion].training &&
-        setTimeout(() => {
-          this.giveAnswer(answer);
-        }, 400)
+      () => !questions[activeQuestion].training && this.giveAnswer(answer)
     );
   };
 
-  showTest = state => {
+  showTest = (state, testID) => {
+    const { tests } = this.state;
+
+    if (state) {
+      const getCurrentTest = tests.filter(test => test.id === testID)[0];
+      this.setState({
+        questions: getCurrentTest.questions,
+        activeTestID: testID
+      });
+    } else {
+      // clean current test
+      this.setState({ activeTestID: null, questions: [], activeQuestion: 0 });
+    }
+
     this.setState({ openTest: state });
   };
 
@@ -326,6 +327,7 @@ class Test extends Component {
       modalVisible,
       openTest,
       activeAnswer,
+      tests,
       questions
     } = this.state;
     return (
@@ -342,7 +344,7 @@ class Test extends Component {
             showTest={this.showTest}
           />
         ) : (
-          <TestsList showTest={this.showTest} />
+          <TestsList tests={tests} showTest={this.showTest} />
         )}
       </div>
     );
