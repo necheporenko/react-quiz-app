@@ -6,7 +6,7 @@ export default ({ finished, active }) => (
       <circle
         stroke="#FFF"
         strokeWidth="3"
-        fill={finished || active ? "#EE584E" : "#C2C2C2"}
+        fill={finished || active ? "#F8CC33" : "#C2C2C2"}
         cx="9"
         cy="9"
         r="10.5"

@@ -4,7 +4,7 @@ export default ({ finished, active }) => (
   <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
     <g transform="translate(3 3)" fill="none" fillRule="evenodd">
       <circle
-        fill={finished || active ? "#F8CC33" : "#C2C2C2"}
+        fill={finished || active ? "#EE584E" : "#C2C2C2"}
         stroke="#FFF"
         strokeWidth="3"
         cx="9"

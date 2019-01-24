@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "antd": "^3.12.4",
+    "immutability-helper": "^3.0.0",
     "node-sass": "^4.11.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
