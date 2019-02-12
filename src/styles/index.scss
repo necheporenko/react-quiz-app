@@ -270,8 +270,7 @@ body {
     border-radius: 4px 10px 4px 4px;
     background-color: rgba(232, 242, 251, 0.73);
     min-height: 215px;
-    min-width: 250px;
-    max-width: 800px;
+    width: 270px;
     position: relative;
 
     p {
@@ -352,6 +351,13 @@ body {
 *   Media
 */
 
+@media (max-height: 550px) {
+  .test__wrapper__content {
+    justify-content: flex-start;
+    margin-top: 13vh;
+  }
+}
+
 @media (max-width: 375px) {
   .tests__title {
     padding-top: 20px;
@@ -367,7 +373,7 @@ body {
       min-height: 165px;
 
       p {
-        font-size: 3vh;
+        font-size: 20px;
       }
     }
 
@@ -399,6 +405,10 @@ body {
         display: block;
       }
     }
+  }
+
+  .test__question {
+    width: 800px;
   }
 
   .tests__title {
