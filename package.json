@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "antd": "^3.12.4",
+    "babel-polyfill": "^6.26.0",
     "immutability-helper": "^3.0.0",
     "node-sass": "^4.11.0",
     "react": "^16.7.0",

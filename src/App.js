@@ -5,7 +5,7 @@ import Test from "./containers/Test";
 import Info from "./containers/Info";
 import About from "./containers/About";
 import Navigation from "./components/Navigation";
-// import 'antd/dist/antd.css';
+import "babel-polyfill";
 
 class App extends Component {
   render() {
