@@ -11,17 +11,19 @@ const TestsList = ({ showTest, tests }) => (
           key={test.id}
           onClick={() => test.status === "active" && showTest(true, test.id)}
         >
-          <Icon
-            name={test.icon}
-            finished={test.status === "finished" || false}
-            active={test.status === "active" || false}
-          />
-          <div className="small-icon">
+          <div>
             <Icon
-              name={test.iconXs}
+              name={test.icon}
               finished={test.status === "finished" || false}
               active={test.status === "active" || false}
             />
+            <div className="small-icon">
+              <Icon
+                name={test.iconXs}
+                finished={test.status === "finished" || false}
+                active={test.status === "active" || false}
+              />
+            </div>
           </div>
         </div>
       ))}

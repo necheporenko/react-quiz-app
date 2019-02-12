@@ -237,14 +237,20 @@ body {
 
     &__item {
       margin: auto auto 37px auto;
-      position: relative;
       cursor: pointer;
       width: 25%;
       text-align: center;
 
+      > div {
+        width: 60px;
+        display: block;
+        margin: auto;
+        position: relative;
+      }
+
       .small-icon {
         position: absolute;
-        right: 15px;
+        right: -6px;
         bottom: -6px;
       }
     }
