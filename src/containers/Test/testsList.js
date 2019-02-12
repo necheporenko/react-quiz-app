@@ -1,6 +1,14 @@
 const QUESTIONS = [
-  { question: "Do you like pineapple juice?", answer: "" },
+  { question: "0Do you like pineapple juice?", answer: "" },
   { question: "Do you like green tea?", answer: "" },
+  { question: "Do you like black tea?", answer: "" },
+  { question: "Do you like orange juice?", answer: "" },
+  { question: "Do you like apple juice?", answer: "" }
+];
+
+const QUESTIONS_TRAINING = [
+  { question: "Do you like pineapple juice?", answer: "", training: true },
+  { question: "Do you like green tea?", answer: "", training: true },
   { question: "Do you like black tea?", answer: "" },
   { question: "Do you like orange juice?", answer: "" },
   { question: "Do you like apple juice?", answer: "" }
@@ -12,34 +20,40 @@ const TESTS_LIST = [
     icon: "wind",
     iconXs: "xsWind",
     status: "active",
-    questions: [
-      { question: "Do you like pineapple juice?", answer: "", training: true },
-      { question: "Do you like green tea?", answer: "", training: true },
-      { question: "Do you like black tea?", answer: "" },
-      { question: "Do you like orange juice?", answer: "" },
-      { question: "Do you like apple juice?", answer: "" }
-    ]
+    questions: QUESTIONS
   },
   {
     id: 2,
     icon: "fire",
     iconXs: "xsWind",
     status: "active",
-    questions: QUESTIONS
+    questions: QUESTIONS_TRAINING
   },
   {
     id: 3,
     icon: "water",
     iconXs: "xsWind",
     status: "active",
-    questions: QUESTIONS
+    questions: [
+      { question: "1 Do you like pineapple juice?", answer: "", training: true },
+      { question: "1 Do you like green tea?", answer: "", training: true },
+      { question: "1 Do you like black tea?", answer: "" },
+      { question: "1 Do you like orange juice?", answer: "" },
+      { question: "1 Do you like apple juice?", answer: "" }
+    ]
   },
   {
     id: 4,
     icon: "earth",
     iconXs: "xsWind",
     status: "active",
-    questions: QUESTIONS
+    questions: [
+      { question: "2 Do you like pineapple juice?", answer: "", training: true },
+      { question: "2 Do you like green tea?", answer: "", training: true },
+      { question: "2 Do you like black tea?", answer: "" },
+      { question: "2 Do you like orange juice?", answer: "" },
+      { question: "2 Do you like apple juice?", answer: "" }
+    ]
   },
 
   {

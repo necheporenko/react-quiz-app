@@ -15,6 +15,7 @@ const CurrentTest = ({
   activeQuestion,
   modalVisible,
   giveAnswer,
+  trainingMode,
   questions,
   setActiveAnswer,
   setModalVisible,
@@ -26,16 +27,28 @@ const CurrentTest = ({
         <IconClose />
       </div>
       <div className="test__header__progressbar">
-        <Progress percent={(activeQuestion / questions.length) * 100} showInfo={false} strokeColor="#8AC82F" />
+        <Progress
+          percent={(activeQuestion / questions.length) * 100}
+          showInfo={false}
+          strokeColor="#8AC82F"
+        />
       </div>
     </Row>
     <div className="test__wrapper__content">
       <div className="test__question">
         <div className="test__question--close">
           <IconCloseCircle onClick={() => setModalVisible(true)} />
-          <ModalTest modalVisible={modalVisible} setModalVisible={setModalVisible} giveAnswer={giveAnswer} />
+          <ModalTest
+            modalVisible={modalVisible}
+            setModalVisible={setModalVisible}
+            giveAnswer={giveAnswer}
+          />
         </div>
-        <p>{questions[activeQuestion] ? questions[activeQuestion].question : questions[activeQuestion - 1].question}</p>
+        <p>
+          {questions[activeQuestion]
+            ? questions[activeQuestion].question
+            : questions[activeQuestion - 1].question}
+        </p>
       </div>
       <div className="test__marks">
         <Row className="test__marks--smiles" type="flex" align="middle" justify="space-between">
@@ -62,7 +75,7 @@ const CurrentTest = ({
         </Row>
       </div>
       <div className="test__answer">
-        {activeAnswer && questions[activeQuestion].training ? (
+        {activeAnswer && trainingMode && questions[activeQuestion].training ? (
           <div>
             <p>{getAnswerLabel(activeAnswer)}</p>
             <button className="btn" onClick={() => giveAnswer(activeAnswer)}>
@@ -70,7 +83,9 @@ const CurrentTest = ({
             </button>
           </div>
         ) : (
-          questions[activeQuestion].training && <div className="test__answer__choose">Choose your answer…</div>
+          // questions[activeQuestion].training && (
+          <div className="test__answer__choose">Choose your answer…</div>
+          // )
         )}
       </div>
     </div>
