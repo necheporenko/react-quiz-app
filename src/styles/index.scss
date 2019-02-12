@@ -158,8 +158,15 @@ body {
 }
 
 .home__content {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
   max-height: 250px;
   height: 100%;
@@ -220,7 +227,9 @@ body {
   }
 
   &__content {
+    display: -ms-grid;
     display: grid;
+    -ms-grid-columns: auto auto auto auto;
     grid-template-columns: auto auto auto auto;
     max-width: 320px;
     margin: auto;
