@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/polyfill": "^7.2.5",
     "antd": "^3.12.4",
     "immutability-helper": "^3.0.0",
     "node-sass": "^4.11.0",
@@ -27,8 +28,5 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ],
-  "devDependencies": {
-    "@babel/polyfill": "^7.2.5"
-  }
+  ]
 }
