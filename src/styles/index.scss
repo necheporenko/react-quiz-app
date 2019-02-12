@@ -228,12 +228,10 @@ body {
     padding: 24px 0 34px 0;
   }
 
-  /* autoprefixer grid: autoplace */
   &__content {
-    display: -ms-grid;
-    display: grid;
-    -ms-grid-columns: auto auto auto auto;
-    grid-template-columns: auto auto auto auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
     max-width: 320px;
     margin: auto;
 
@@ -241,10 +239,12 @@ body {
       margin: auto auto 37px auto;
       position: relative;
       cursor: pointer;
+      width: 25%;
+      text-align: center;
 
       .small-icon {
         position: absolute;
-        right: -6px;
+        right: 15px;
         bottom: -6px;
       }
     }
