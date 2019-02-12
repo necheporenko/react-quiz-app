@@ -203,7 +203,9 @@ body {
   }
 
   &--btn {
+    display: block;
     margin: 0 auto;
+    text-align: center;
   }
 }
 
@@ -226,6 +228,7 @@ body {
     padding: 24px 0 34px 0;
   }
 
+  /* autoprefixer grid: autoplace */
   &__content {
     display: -ms-grid;
     display: grid;
