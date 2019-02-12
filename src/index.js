@@ -1,3 +1,6 @@
+import "react-app-polyfill/ie9";
+import "@babel/polyfill";
+
 import React from "react";
 import ReactDOM from "react-dom";
 import "antd/dist/antd.css";
