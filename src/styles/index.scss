@@ -36,6 +36,10 @@ body {
   margin: 0 auto;
 }
 
+.wrapper__app {
+  height: 100vh;
+}
+
 .wrapper__modal {
   display: flex;
   flex-direction: column;
