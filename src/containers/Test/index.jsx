@@ -20,23 +20,25 @@ class Test extends Component {
   giveAnswer = answer => {
     const { activeTestID, activeQuestion, questions, tests } = this.state;
 
-    this.setState(
-      {
-        questions: update(questions, {
-          [activeQuestion]: { answer: { $set: answer } }
-        }),
-        activeQuestion: activeQuestion + 1,
-        activeAnswer: "",
-        tests: update(tests, {
-          [activeTestID - 1]: {
-            questions: { [activeQuestion]: { answer: { $set: answer } } },
-            activeQuestion: { $set: activeQuestion + 1 }
-          }
-        })
-      },
-      // Handler for last question
-      () => this.giveAnswerForLastQuestion()
-    );
+    if (questions[activeQuestion]) {
+      this.setState(
+        {
+          questions: update(questions, {
+            [activeQuestion]: { answer: { $set: answer } }
+          }),
+          activeQuestion: activeQuestion + 1,
+          activeAnswer: "",
+          tests: update(tests, {
+            [activeTestID - 1]: {
+              questions: { [activeQuestion]: { answer: { $set: answer } } },
+              activeQuestion: { $set: activeQuestion + 1 }
+            }
+          })
+        },
+        // Handler for last question
+        () => this.giveAnswerForLastQuestion()
+      );
+    }
   };
 
   giveAnswerForLastQuestion = () => {
@@ -52,9 +54,9 @@ class Test extends Component {
       setTimeout(() => {
         this.setState(
           {
-            // questions: QUESTIONS,
             questions: [],
             activeQuestion: 0,
+            activeAnswer: "",
             openTest: false,
             tests: updatedTest,
             trainingMode: false
