@@ -85,7 +85,9 @@ class Test extends Component {
 
     this.setState(
       { activeAnswer: answer },
-      () => (!trainingMode || !questions[activeQuestion].training) && this.giveAnswer(answer)
+      () =>
+        (!trainingMode || (questions[activeQuestion] && !questions[activeQuestion].training)) &&
+        this.giveAnswer(answer)
     );
   };
 
