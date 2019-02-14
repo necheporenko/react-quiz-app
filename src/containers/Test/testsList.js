@@ -20,7 +20,7 @@ const TESTS_LIST = [
     icon: "wind",
     iconXs: "xsWind",
     status: "active",
-    questions: QUESTIONS
+    questions: QUESTIONS_TRAINING
   },
   {
     id: 2,
