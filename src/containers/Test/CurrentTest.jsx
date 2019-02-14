@@ -75,7 +75,10 @@ const CurrentTest = ({
         </Row>
       </div>
       <div className="test__answer">
-        {activeAnswer && trainingMode && questions[activeQuestion].training ? (
+        {activeAnswer &&
+        trainingMode &&
+        questions[activeQuestion] &&
+        questions[activeQuestion].training ? (
           <div>
             <p>{getAnswerLabel(activeAnswer)}</p>
             <button className="btn" onClick={() => giveAnswer(activeAnswer)}>
@@ -83,9 +86,7 @@ const CurrentTest = ({
             </button>
           </div>
         ) : (
-          // questions[activeQuestion].training && (
           <div className="test__answer__choose">Choose your answer…</div>
-          // )
         )}
       </div>
     </div>
