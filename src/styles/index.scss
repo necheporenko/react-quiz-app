@@ -248,6 +248,11 @@ body {
         position: relative;
       }
 
+      circle,
+      path {
+        transition: all ease 3s;
+      }
+
       .small-icon {
         position: absolute;
         right: -6px;
@@ -373,6 +378,10 @@ body {
   .test__wrapper__content {
     justify-content: flex-start;
     margin-top: 10vh;
+  }
+
+  .home__content {
+    justify-content: space-around;
   }
 }
 

@@ -42,7 +42,7 @@ class Test extends Component {
   giveAnswerForLastQuestion = () => {
     const { activeTestID, activeQuestion, questions, tests } = this.state;
 
-    if (activeQuestion === questions.length - 1) {
+    if (activeQuestion === questions.length) {
       const updatedTest = update(tests, {
         [activeTestID - 1]: {
           status: { $set: "finished" }
