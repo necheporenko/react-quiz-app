@@ -1,10 +1,10 @@
-import React, { Component } from "react";
-import { Modal } from "antd";
-import { ReactComponent as IconClose } from "../../components/Icons/actions/close.svg";
+import React, { Component } from 'react';
+import { Modal } from 'antd';
+import { ReactComponent as IconClose } from '../../components/Icons/actions/close.svg';
 
 class ModalTest extends Component {
   state = {
-    message: ""
+    message: ''
   };
 
   handleChange = event => {
@@ -28,7 +28,7 @@ class ModalTest extends Component {
           <button
             className="btn"
             onClick={() => {
-              giveAnswer("Irrelevant question");
+              giveAnswer('Irrelevant question');
               setModalVisible(false);
             }}
           >
@@ -37,7 +37,7 @@ class ModalTest extends Component {
           <button
             className="btn"
             onClick={() => {
-              giveAnswer("Didn’t understand the question");
+              giveAnswer('Didn’t understand the question');
               setModalVisible(false);
             }}
           >
@@ -46,7 +46,7 @@ class ModalTest extends Component {
           <button
             className="btn"
             onClick={() => {
-              giveAnswer("Stupid question");
+              giveAnswer('Stupid question');
               setModalVisible(false);
             }}
           >
@@ -68,7 +68,7 @@ class ModalTest extends Component {
               message && giveAnswer(message);
               message && setModalVisible(false);
             }}
-            style={{ backgroundColor: message && "#00aff9" }}
+            style={{ backgroundColor: message && '#00aff9' }}
           >
             Send
           </button>

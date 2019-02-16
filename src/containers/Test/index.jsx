@@ -1,15 +1,15 @@
-import React, { Component } from "react";
-import SimpleStorage from "react-simple-storage";
-import update from "immutability-helper";
-import CurrentTest from "./CurrentTest";
-import TestList from "./TestList";
-import TEST_LIST from "./testsList";
+import React, { Component } from 'react';
+import SimpleStorage from 'react-simple-storage';
+import update from 'immutability-helper';
+import CurrentTest from './CurrentTest';
+import TestList from './TestList';
+import TEST_LIST from '../../contstants/testList.json';
 
 class Test extends Component {
   state = {
     modalVisible: false,
     openTest: false,
-    activeAnswer: "",
+    activeAnswer: '',
     activeTestID: null,
     activeQuestion: 0,
     questions: [],
@@ -27,7 +27,7 @@ class Test extends Component {
             [activeQuestion]: { answer: { $set: answer } }
           }),
           activeQuestion: activeQuestion + 1,
-          activeAnswer: "",
+          activeAnswer: '',
           tests: update(tests, {
             [activeTestID - 1]: {
               questions: { [activeQuestion]: { answer: { $set: answer } } },
@@ -47,7 +47,7 @@ class Test extends Component {
     if (activeQuestion === questions.length) {
       const updatedTest = update(tests, {
         [activeTestID - 1]: {
-          status: { $set: "finished" }
+          status: { $set: 'finished' }
         }
       });
 
@@ -56,7 +56,7 @@ class Test extends Component {
           {
             questions: [],
             activeQuestion: 0,
-            activeAnswer: "",
+            activeAnswer: '',
             openTest: false,
             tests: updatedTest,
             trainingMode: false
@@ -66,7 +66,7 @@ class Test extends Component {
               this.setState({
                 tests: update(updatedTest, {
                   [activeTestID + 3]: {
-                    status: { $set: "active" }
+                    status: { $set: 'active' }
                   }
                 })
               });
@@ -125,7 +125,7 @@ class Test extends Component {
     } = this.state;
     return (
       <div className="wrapper__tests">
-        <SimpleStorage parent={this} prefix={"App"} blacklist={["modalVisible"]} />
+        <SimpleStorage parent={this} prefix={'App'} blacklist={['modalVisible']} />
 
         {openTest ? (
           <CurrentTest

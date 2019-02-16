@@ -1,5 +1,5 @@
-import React from "react";
-import Icon from "../../components/Icons";
+import React from 'react';
+import Icon from '../../components/Icons';
 
 const TestsList = ({ showTest, tests }) => (
   <div className="tests">
@@ -9,19 +9,19 @@ const TestsList = ({ showTest, tests }) => (
         <div
           className="tests__content__item"
           key={test.id}
-          onClick={() => test.status === "active" && showTest(true, test.id)}
+          onClick={() => test.status === 'active' && showTest(true, test.id)}
         >
           <div>
             <Icon
               name={test.icon}
-              finished={test.status === "finished" || false}
-              active={test.status === "active" || false}
+              finished={test.status === 'finished' || false}
+              active={test.status === 'active' || false}
             />
             <div className="small-icon">
               <Icon
                 name={test.iconXs}
-                finished={test.status === "finished" || false}
-                active={test.status === "active" || false}
+                finished={test.status === 'finished' || false}
+                active={test.status === 'active' || false}
               />
             </div>
           </div>
