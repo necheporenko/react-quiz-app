@@ -13,7 +13,7 @@ import { ReactComponent as IconSmile5 } from '../../components/Icons/smiles/smil
 const CurrentTest = ({
   activeAnswer,
   activeQuestion,
-  modalVisible,
+  modalQuestionVisible,
   giveAnswer,
   trainingMode,
   questions,
@@ -37,9 +37,9 @@ const CurrentTest = ({
     <div className="test__wrapper__content">
       <div className="test__question">
         <div className="test__question--close">
-          <IconCloseCircle onClick={() => setModalVisible(true)} />
+          <IconCloseCircle onClick={() => setModalVisible(true, 'question')} />
           <ModalTest
-            modalVisible={modalVisible}
+            modalQuestionVisible={modalQuestionVisible}
             setModalVisible={setModalVisible}
             giveAnswer={giveAnswer}
           />

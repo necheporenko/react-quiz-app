@@ -1,5 +1,5 @@
-@import "./reset.scss";
-@import "./fonts.scss";
+@import './reset.scss';
+@import './fonts.scss';
 
 /* Variables */
 $brand-color: #00aff9;
@@ -10,7 +10,7 @@ $gray-text: rgba(0, 0, 0, 0.6);
 body {
   margin: 0;
   padding: 0;
-  font-family: "Proxima Nova", "Roboto", sans-serif;
+  font-family: 'Proxima Nova', 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -27,7 +27,7 @@ body {
   border: 0;
   cursor: pointer;
   color: #ffffff;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 14px;
   font-weight: 500;
   letter-spacing: 0.75px;
@@ -46,6 +46,10 @@ body {
   position: relative;
   padding-top: 20px;
 
+  h2 {
+    font-size: 18px;
+  }
+
   button {
     width: 100%;
     margin-bottom: 16px;
@@ -60,7 +64,7 @@ body {
 
   label {
     color: rgba(0, 0, 0, 0.9);
-    font-family: "Proxima Nova", sans-serif;
+    font-family: 'Proxima Nova', sans-serif;
     font-size: 14px;
     line-height: 17px;
     padding-bottom: 13px;
@@ -70,7 +74,7 @@ body {
     border: 1px solid #979797;
     border-radius: 8px;
     color: rgba(0, 0, 0, 0.54);
-    font-family: "Proxima Nova", sans-serif;
+    font-family: 'Proxima Nova', sans-serif;
     font-size: 12px;
     line-height: 15px;
     padding: 14px 12px;
@@ -93,6 +97,16 @@ body {
     height: 28px;
     width: 90px;
     margin: 20px 0 0 0;
+  }
+}
+
+.wrapper__modal.modal-reset {
+  h2 {
+    text-align: center;
+    margin: 15px 0 25px 0;
+  }
+  .btn {
+    width: auto;
   }
 }
 /* End Components */
@@ -130,7 +144,7 @@ body {
 
       span {
         display: none;
-        font-family: "Proxima Nova", sans-serif;
+        font-family: 'Proxima Nova', sans-serif;
         font-size: 16px;
         line-height: 20px;
         margin-left: 12px;
@@ -183,7 +197,7 @@ body {
 
     h1 {
       color: rgba(0, 0, 0, 0.87);
-      font-family: "Proxima Nova", sans-serif;
+      font-family: 'Proxima Nova', sans-serif;
       font-size: 38px;
       font-weight: 600;
       line-height: 46px;
@@ -199,7 +213,7 @@ body {
 
   &--description {
     color: $gray-text;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 14px;
     letter-spacing: -0.39px;
     line-height: 20px;
@@ -224,7 +238,7 @@ body {
 
   &__title {
     color: #2c2e38;
-    font-family: "Proxima Nova", sans-serif;
+    font-family: 'Proxima Nova', sans-serif;
     font-size: 24px;
     font-weight: bold;
     line-height: 29px;
@@ -302,7 +316,7 @@ body {
 
     p {
       color: #2c2e38;
-      font-family: "Proxima Nova", sans-serif;
+      font-family: 'Proxima Nova', sans-serif;
       font-size: 24px;
       font-weight: bold;
       line-height: 30px;
@@ -343,7 +357,7 @@ body {
 
     p {
       color: rgba(0, 0, 0, 0.54);
-      font-family: "Roboto", sans-serif;
+      font-family: 'Roboto', sans-serif;
       font-size: 16px;
       font-style: italic;
       font-weight: 500;
@@ -354,7 +368,7 @@ body {
     }
 
     &__choose {
-      font-family: "Roboto", sans-serif;
+      font-family: 'Roboto', sans-serif;
       color: rgba(117, 117, 117, 0.54);
       font-size: 14px;
       font-style: italic;
@@ -366,7 +380,7 @@ body {
 
 .empty {
   color: rgba(0, 0, 0, 0.54);
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 22px;
   font-style: italic;
   font-weight: 500;

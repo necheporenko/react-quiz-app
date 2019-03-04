@@ -12,24 +12,24 @@ class ModalTest extends Component {
   };
 
   render() {
-    const { modalVisible, setModalVisible, giveAnswer } = this.props;
+    const { modalQuestionVisible, setModalVisible, giveAnswer } = this.props;
     const { message } = this.state;
     return (
       <Modal
-        visible={modalVisible}
+        visible={modalQuestionVisible}
         centered
-        onOk={() => setModalVisible(false)}
-        onCancel={() => setModalVisible(false)}
+        onOk={() => setModalVisible(false, 'question')}
+        onCancel={() => setModalVisible(false, 'question')}
         closable={false}
         footer={null}
       >
         <div className="wrapper__modal">
-          <IconClose className="close" onClick={() => setModalVisible(false)} />
+          <IconClose className="close" onClick={() => setModalVisible(false, 'question')} />
           <button
             className="btn"
             onClick={() => {
               giveAnswer('Irrelevant question');
-              setModalVisible(false);
+              setModalVisible(false, 'question');
             }}
           >
             Irrelevant question
@@ -38,7 +38,7 @@ class ModalTest extends Component {
             className="btn"
             onClick={() => {
               giveAnswer('Didn’t understand the question');
-              setModalVisible(false);
+              setModalVisible(false, 'question');
             }}
           >
             Didn’t understand the question
@@ -47,7 +47,7 @@ class ModalTest extends Component {
             className="btn"
             onClick={() => {
               giveAnswer('Stupid question');
-              setModalVisible(false);
+              setModalVisible(false, 'question');
             }}
           >
             Stupid question
@@ -66,7 +66,7 @@ class ModalTest extends Component {
             className="send"
             onClick={() => {
               message && giveAnswer(message);
-              message && setModalVisible(false);
+              message && setModalVisible(false, 'question');
             }}
             style={{ backgroundColor: message && '#00aff9' }}
           >

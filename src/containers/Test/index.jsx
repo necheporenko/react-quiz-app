@@ -7,14 +7,17 @@ import TEST_LIST from '../../contstants/testList.json';
 
 class Test extends Component {
   state = {
-    modalVisible: false,
+    modalQuestionVisible: false,
+    modalResetVisible: false,
+    resetBtn: false,
     openTest: false,
     activeAnswer: '',
     activeTestID: null,
     activeQuestion: 0,
     questions: [],
     tests: TEST_LIST,
-    trainingMode: true
+    trainingMode: true,
+    isSomeTestCompleted: false
   };
 
   giveAnswer = answer => {
@@ -59,7 +62,8 @@ class Test extends Component {
             activeAnswer: '',
             openTest: false,
             tests: updatedTest,
-            trainingMode: false
+            trainingMode: false,
+            isSomeTestCompleted: true
           },
           () => {
             if (tests[activeTestID + 3] && tests[activeTestID + 3].id) {
@@ -77,8 +81,19 @@ class Test extends Component {
     }
   };
 
-  setModalVisible = state => {
-    this.setState({ modalVisible: state });
+  setModalVisible = (state, modalName) => {
+    switch (modalName) {
+      case 'question':
+        this.setState({ modalQuestionVisible: state });
+        break;
+
+      case 'resetTests':
+        this.setState({ modalResetVisible: state });
+        break;
+
+      default:
+        break;
+    }
   };
 
   // for rirst 1-2 questions
@@ -113,25 +128,37 @@ class Test extends Component {
     this.setState({ openTest: state });
   };
 
+  resetAllTests = () => {
+    this.setState({ tests: TEST_LIST });
+  };
+
   render() {
     const {
       activeQuestion,
-      modalVisible,
+      modalQuestionVisible,
+      modalResetVisible,
       openTest,
       activeAnswer,
       tests,
       questions,
-      trainingMode
+      trainingMode,
+      isSomeTestCompleted
     } = this.state;
+
     return (
       <div className="wrapper__tests">
-        <SimpleStorage parent={this} prefix={'App'} blacklist={['modalVisible']} />
+        <SimpleStorage
+          parent={this}
+          prefix={'App'}
+          blacklist={['modalQuestionVisible', 'modalResetVisible']}
+        />
 
         {openTest ? (
           <CurrentTest
             activeAnswer={activeAnswer}
             activeQuestion={activeQuestion}
-            modalVisible={modalVisible}
+            modalQuestionVisible={modalQuestionVisible}
+            modalResetVisible={modalResetVisible}
             questions={questions}
             trainingMode={trainingMode}
             giveAnswer={this.giveAnswer}
@@ -140,7 +167,14 @@ class Test extends Component {
             showTest={this.showTest}
           />
         ) : (
-          <TestList tests={tests} showTest={this.showTest} />
+          <TestList
+            tests={tests}
+            isSomeTestCompleted={isSomeTestCompleted}
+            modalResetVisible={modalResetVisible}
+            resetAllTests={this.resetAllTests}
+            setModalVisible={this.setModalVisible}
+            showTest={this.showTest}
+          />
         )}
       </div>
     );

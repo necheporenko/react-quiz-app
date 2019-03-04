@@ -1,7 +1,15 @@
 import React from 'react';
+import ModalReset from './ModalReset';
 import Icon from '../../components/Icons';
 
-const TestsList = ({ showTest, tests }) => (
+const TestsList = ({
+  tests,
+  isSomeTestCompleted,
+  modalResetVisible,
+  showTest,
+  setModalVisible,
+  resetAllTests
+}) => (
   <div className="tests">
     <h2 className="tests__title">Check yourself</h2>
     <div className="tests__content">
@@ -27,6 +35,20 @@ const TestsList = ({ showTest, tests }) => (
           </div>
         </div>
       ))}
+
+      {isSomeTestCompleted && (
+        <>
+          <ModalReset
+            modalResetVisible={modalResetVisible}
+            setModalVisible={setModalVisible}
+            resetAllTests={resetAllTests}
+          />
+
+          <button className="btn" onClick={() => setModalVisible(true, 'resetTests')}>
+            Reset all tests
+          </button>
+        </>
+      )}
     </div>
   </div>
 );
