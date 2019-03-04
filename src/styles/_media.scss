@@ -1,0 +1,73 @@
+@media (max-height: 550px) {
+  .test__wrapper__content {
+    justify-content: flex-start;
+    margin-top: 10vh;
+  }
+
+  .home__content {
+    justify-content: space-around;
+    padding: 20px 32px;
+  }
+}
+
+@media (max-width: 375px) {
+  .tests__title {
+    padding-top: 20px;
+    padding-bottom: 8%;
+  }
+  .tests__content__item {
+    margin: auto auto 25px auto;
+  }
+  .test {
+    padding: 20px 22px 0 22px;
+
+    &__question {
+      min-height: 165px;
+
+      p {
+        font-size: 20px;
+      }
+    }
+
+    &__answer {
+      p {
+        padding: 10% 0;
+      }
+    }
+
+    &__marks {
+      padding-top: 9%;
+    }
+  }
+}
+
+@media (min-width: 1025px) {
+  .app__content {
+    height: calc(100vh - 100px);
+  }
+
+  .navigation__app {
+    height: 99px;
+
+    ul {
+      padding: 38px 0;
+      max-width: 445px;
+
+      a span {
+        display: block;
+      }
+    }
+  }
+
+  .test__question {
+    width: 800px;
+  }
+
+  .tests__title {
+    padding-top: 54px;
+    padding-bottom: 52px;
+  }
+  .tests__content {
+    max-width: 400px;
+  }
+}
