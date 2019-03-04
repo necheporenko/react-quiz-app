@@ -311,7 +311,7 @@ body {
     border-radius: 4px 10px 4px 4px;
     background-color: rgba(232, 242, 251, 0.73);
     min-height: 215px;
-    width: 270px;
+    width: 100%;
     position: relative;
 
     p {
@@ -333,7 +333,7 @@ body {
 
   &__marks {
     padding-top: 36px;
-    max-width: 270px;
+    max-width: 400px;
     width: 100%;
 
     &--smiles {

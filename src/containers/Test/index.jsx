@@ -129,7 +129,7 @@ class Test extends Component {
   };
 
   resetAllTests = () => {
-    this.setState({ tests: TEST_LIST });
+    this.setState({ tests: TEST_LIST, isSomeTestCompleted: false });
   };
 
   render() {
