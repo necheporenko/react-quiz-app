@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { Row } from 'antd';
 
 import Icon from '../../components/Icons';
@@ -22,7 +23,7 @@ class Info extends Component {
           <div className="info__content__title">Extraverted Sensing Thinking Judging</div>
           <div className="info__content__type">"Logistician"</div>
           <div className="info__content__test-result">
-            According to the test results with a probability of 84% . Your personality type is ESTJ.
+            According to the test results with a probability of 84%. Your personality type is ESTJ.
           </div>
           <button className="btn">Download PDF report</button>
           <div className="info__content__probability">
@@ -34,6 +35,15 @@ class Info extends Component {
             <span>ENTP 54%</span>
             <span>ENTJ 47%</span>
           </div>
+        </Row>
+
+        <Row className="info__content-temporary" type="flex" justify="center" align="middle">
+          <h2>
+            The test results <br /> will be displayed here
+          </h2>
+          <Link to="/test">
+            <button className="btn">TAKE A FREE TEST</button>
+          </Link>
         </Row>
       </div>
     );
