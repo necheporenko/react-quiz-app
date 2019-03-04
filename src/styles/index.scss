@@ -321,6 +321,8 @@ body {
       font-weight: bold;
       line-height: 30px;
       padding: 16px;
+      height: 100%;
+      overflow-y: auto;
     }
 
     &--close {
@@ -342,6 +344,10 @@ body {
 
     svg {
       opacity: 0.54;
+
+      &:active {
+        opacity: 1;
+      }
     }
 
     .active {
@@ -353,7 +359,7 @@ body {
 
   &__answer {
     text-align: center;
-    min-height: 103px;
+    min-height: 100px;
 
     p {
       color: rgba(0, 0, 0, 0.54);
