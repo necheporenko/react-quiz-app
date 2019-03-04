@@ -1,12 +1,17 @@
-import React, { Component } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import Home from "./containers/Home";
-import Test from "./containers/Test";
-import Info from "./containers/Info";
-import About from "./containers/About";
-import Navigation from "./components/Navigation";
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Home from './containers/Home';
+import Test from './containers/Test';
+import Info from './containers/Info';
+import About from './containers/About';
+import Navigation from './components/Navigation';
 
 class App extends Component {
+  componentDidMount() {
+    var elem = document.getElementById('loading');
+    elem.style.display = 'none';
+  }
+
   render() {
     return (
       <Router>

@@ -26,9 +26,42 @@
     <title>Turn!</title>
     <meta name="description" content="Turn! - Check yourself!" />
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,500i" rel="stylesheet" />
+
+    <style>
+      #loading {
+        display: block;
+        margin: auto;
+        position: absolute;
+        top: calc(50% - 32px);
+        left: calc(50% - 32px);
+      }
+    </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="loading">
+      <svg width="65" height="65" viewBox="0 0 340 340" xmlns="http://www.w3.org/2000/svg">
+        <g fill="none" fill-rule="evenodd">
+          <path
+            d="M282 340c-10.958-51.424-56.716-90-111.5-90S69.958 288.576 59 340c27.295-30.716 67.133-50.074 111.5-50.074 44.367 0 84.205 19.358 111.5 50.074z"
+            fill="#8AC82F"
+          />
+          <path
+            d="M59 0c10.958 51.424 56.716 90 111.5 90S271.042 51.424 282 0c-27.295 30.716-67.133 50.074-111.5 50.074C126.133 50.074 86.295 30.716 59 0z"
+            fill="#EE584E"
+          />
+          <path
+            d="M0 59c51.424 10.958 90 56.716 90 111.5S51.424 271.042 0 282c30.716-27.295 50.074-67.133 50.074-111.5C50.074 126.133 30.716 86.295 0 59z"
+            fill="#F8CC33"
+          />
+          <path
+            d="M340 59c-51.424 10.958-90 56.716-90 111.5s38.576 100.542 90 111.5c-30.716-27.295-50.074-67.133-50.074-111.5 0-44.367 19.358-84.205 50.074-111.5z"
+            fill="#4DACF3"
+          />
+        </g>
+      </svg>
+    </div>
+
     <div id="root"></div>
     <!--
       This HTML file is a template.
