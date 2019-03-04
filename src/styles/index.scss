@@ -259,24 +259,24 @@ body {
       width: 25%;
       text-align: center;
 
-      > div {
-        width: 60px;
-        display: block;
-        margin: auto;
-        position: relative;
-      }
-
       circle,
       path {
         transition: all ease 3s;
       }
-
-      .small-icon {
-        position: absolute;
-        right: -6px;
-        bottom: -6px;
-      }
     }
+  }
+}
+
+.element-icon__wrapper {
+  width: 60px;
+  display: block;
+  margin: auto;
+  position: relative;
+
+  .small-icon {
+    position: absolute;
+    right: -6px;
+    bottom: -6px;
   }
 }
 
@@ -380,6 +380,105 @@ body {
       font-style: italic;
       line-height: 16px;
       padding: 34px 0;
+    }
+  }
+}
+
+.info {
+  height: 100%;
+
+  &__content {
+    flex-direction: column;
+    height: 100%;
+
+    .element-icon__wrapper {
+      margin: 0;
+      width: 40px;
+      height: 44px;
+
+      > svg {
+        width: 37px;
+        height: 37px;
+      }
+
+      .small-icon {
+        right: -2px;
+        bottom: 0px;
+
+        svg {
+          width: 17px;
+          height: 17px;
+        }
+      }
+    }
+
+    &__title-abbreviation,
+    &__title,
+    &__type {
+      color: #2c2e38;
+      font-family: 'Proxima Nova', sans-serif;
+      text-align: center;
+    }
+
+    &__title-abbreviation {
+      font-size: 60px;
+      font-weight: bold;
+      line-height: 72px;
+      margin-top: 10px;
+    }
+
+    &__title {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 40px;
+    }
+
+    &__type {
+      font-size: 24px;
+      font-weight: 600;
+      line-height: 40px;
+      margin-bottom: 10px;
+    }
+
+    &__test-result,
+    &__probability {
+      color: rgba(44, 46, 56, 0.7);
+      font-family: 'Proxima Nova', sans-serif;
+      text-align: center;
+    }
+
+    &__test-result {
+      font-size: 14px;
+      line-height: 21px;
+    }
+
+    &__probability {
+      font-size: 12px;
+      line-height: 15px;
+      margin-bottom: 12px;
+    }
+
+    &__probability-result {
+      display: flex;
+      justify-content: space-between;
+
+      span {
+        border-radius: 11.5px;
+        background-color: #eeeeee;
+        color: rgba(44, 46, 56, 0.7);
+        font-family: 'Proxima Nova';
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 15px;
+        text-align: center;
+        margin: 0 8px;
+        padding: 5px 12px;
+      }
+    }
+
+    .btn {
+      margin-top: 25px;
+      margin-bottom: 35px;
     }
   }
 }

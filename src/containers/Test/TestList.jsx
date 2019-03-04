@@ -1,4 +1,5 @@
 import React from 'react';
+
 import ModalReset from './ModalReset';
 import Icon from '../../components/Icons';
 
@@ -19,7 +20,7 @@ const TestsList = ({
           key={test.id}
           onClick={() => test.status === 'active' && showTest(true, test.id)}
         >
-          <div>
+          <div className="element-icon__wrapper">
             <Icon
               name={test.icon}
               finished={test.status === 'finished' || false}

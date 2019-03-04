@@ -1,12 +1,12 @@
-import React from "react";
+import React from 'react';
 
 export default ({ finished, active }) => (
-  <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+  <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
     <g transform="translate(3 3)" fill="none" fillRule="evenodd">
       <circle
         stroke="#FFF"
         strokeWidth="3"
-        fill={finished || active ? "#4DACF3" : "#C2C2C2"}
+        fill={finished || active ? '#4DACF3' : '#C2C2C2'}
         cx="9"
         cy="9"
         r="10.5"
