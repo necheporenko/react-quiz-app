@@ -1,9 +1,22 @@
-import React from "react";
+import React, { Component } from 'react';
+import { Row } from 'antd';
 
-const Info = () => (
-  <h2 className="empty">
-    Info <br /> Empty Page
-  </h2>
-);
+class Info extends Component {
+  render() {
+    return (
+      <div className="info">
+        <Row className="info__content" type="flex" justify="center" align="middle">
+          <span>1</span>
+          <span>1</span>
+
+          <span>1</span>
+          <span>1</span>
+          <span>1</span>
+          <span>1</span>
+        </Row>
+      </div>
+    );
+  }
+}
 
 export default Info;
