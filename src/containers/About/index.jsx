@@ -25,9 +25,14 @@ class About extends Component {
       <div className="about">
         <Row className="about__content" type="flex" justify="center" align="middle">
           <IconAbout />
-          <div className="about__content__description">The test uses the typology of</div>
+          <div className="about__content__description">
+            The methodology of this test is based on the experience of processing thousands of
+            personality type questionnaires in accordance with the typology of
+          </div>
           <div className="about__content__name">Carl Gustav Jung</div>
-          <div className="about__content__label">We welcome any comments and suggestions:</div>
+          <div className="about__content__label">
+            The test works in an experimental mode, we welcome any comments or suggestions::
+          </div>
           <textarea
             id="about__message"
             name="about__message"
