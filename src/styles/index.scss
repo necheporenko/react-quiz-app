@@ -32,6 +32,19 @@ body {
   padding: 8px 20px;
 }
 
+.textarea {
+  border: 1px solid #979797;
+  border-radius: 8px;
+  color: rgba(0, 0, 0, 0.54);
+  font-size: 12px;
+  line-height: 15px;
+  padding: 16px;
+  outline: none;
+  &:focus {
+    outline: none;
+  }
+}
+
 .wrapper__app {
   height: 100vh;
 }
@@ -500,6 +513,56 @@ body {
 
     .btn {
       padding: 8px 28px;
+    }
+  }
+}
+
+.about {
+  height: 100%;
+
+  &__content {
+    flex-direction: column;
+    height: 100%;
+
+    &__description,
+    &__name,
+    &__label {
+      color: #2c2e38;
+    }
+
+    &__description {
+      font-size: 18px;
+      line-height: 22px;
+      text-align: center;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+    &__name {
+      font-size: 20px;
+      font-weight: bold;
+      line-height: 24px;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    &__label {
+      font-size: 13px;
+      line-height: 15px;
+      margin-bottom: 15px;
+    }
+
+    textarea,
+    button {
+      max-width: 275px;
+      width: 100%;
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: none;
+    }
+
+    button {
+      margin-top: 15px;
     }
   }
 }
