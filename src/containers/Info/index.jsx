@@ -6,9 +6,17 @@ import Icon from '../../components/Icons';
 
 class Info extends Component {
   render() {
+    const { isComplitedAllTests } = this.props;
+
     return (
       <div className="info">
-        <Row className="info__content" type="flex" justify="center" align="middle">
+        <Row
+          className="info__content"
+          type="flex"
+          justify="center"
+          align="middle"
+          style={{ opacity: isComplitedAllTests ? '1' : '0.07' }}
+        >
           <div className="element-icon__wrapper">
             <Icon name={'earth'} finished={true} active={true} />
             <div className="small-icon">
@@ -37,14 +45,16 @@ class Info extends Component {
           </div>
         </Row>
 
-        <Row className="info__content-temporary" type="flex" justify="center" align="middle">
-          <h2>
-            The test results <br /> will be displayed here
-          </h2>
-          <Link to="/test">
-            <button className="btn">TAKE A FREE TEST</button>
-          </Link>
-        </Row>
+        {!isComplitedAllTests && (
+          <Row className="info__content-temporary" type="flex" justify="center" align="middle">
+            <h2>
+              The test results <br /> will be displayed here
+            </h2>
+            <Link to="/test">
+              <button className="btn">TAKE A FREE TEST</button>
+            </Link>
+          </Row>
+        )}
       </div>
     );
   }

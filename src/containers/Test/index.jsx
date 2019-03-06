@@ -74,11 +74,27 @@ class Test extends Component {
                   }
                 })
               });
+            } else {
+              this.handleLastQuestion();
             }
           }
         );
       }, 1000);
     }
+  };
+
+  handleLastQuestion = () => {
+    if (this.checkLast4Questions()) {
+      this.props.handleComplitedAllTests(true);
+    }
+  };
+
+  checkLast4Questions = () => {
+    const { tests } = this.state;
+    const getLast4Questions = tests.slice(tests.length - 4);
+    const isAllTestsComplited = getLast4Questions.every(question => question.status === 'finished');
+
+    return isAllTestsComplited;
   };
 
   setModalVisible = (state, modalName) => {
@@ -129,7 +145,9 @@ class Test extends Component {
   };
 
   resetAllTests = () => {
-    this.setState({ tests: TEST_LIST, isSomeTestCompleted: false });
+    this.setState({ tests: TEST_LIST, isSomeTestCompleted: false }, () => {
+      this.props.handleComplitedAllTests(false);
+    });
   };
 
   render() {
