@@ -4,6 +4,8 @@ import { Row } from 'antd';
 
 import Icon from '../../components/Icons';
 
+import PDF from './PDF_report.pdf';
+
 const ANSWER_ARRAY = [
   {
     icon: 'wind',
@@ -179,7 +181,9 @@ class Info extends Component {
             According to the test results with a probability of {this.getRandomNumber(80, 95)}%.
             Your personality type is {type}.
           </div>
-          <button className="btn">Download PDF report</button>
+          <a href={PDF} download="file.pdf">
+            <button className="btn">Download PDF report</button>
+          </a>
           <div className="info__content__probability">
             The probability of other types according to the test:
           </div>
