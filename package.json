@@ -5,6 +5,7 @@
   "author": "necheporenko",
   "dependencies": {
     "@babel/polyfill": "^7.2.5",
+    "@react-pdf/renderer": "^1.4.0",
     "antd": "^3.12.4",
     "firebase": "^5.8.6",
     "immutability-helper": "^3.0.0",
