@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SimpleStorage from 'react-simple-storage';
 import update from 'immutability-helper';
+import Firebase from '../../firebase';
 import CurrentTest from './CurrentTest';
 import TestList from './TestList';
 import TEST_LIST from '../../contstants/testList.json';
@@ -85,6 +86,7 @@ class Test extends Component {
 
   handleLastQuestion = () => {
     if (this.checkLast4Questions()) {
+      this.sendResultsToServer();
       this.props.handleComplitedAllTests(true);
     }
   };
@@ -148,6 +150,28 @@ class Test extends Component {
     this.setState({ tests: TEST_LIST, isSomeTestCompleted: false }, () => {
       this.props.handleComplitedAllTests(false);
     });
+  };
+
+  sendResultsToServer = () => {
+    const { tests } = this.state;
+
+    const database = Firebase.database();
+    const newResultKey = database
+      .ref()
+      .child('results')
+      .push().key;
+    const ref = database.ref(`results/${newResultKey}`);
+
+    const result = tests.map(test => {
+      return {
+        testName: `${test.icon}-${test.iconXs}`,
+        testQuestions: test.questions.map(question => {
+          return { question: question.question, answer: question.answer };
+        })
+      };
+    });
+
+    ref.set({ tests: result });
   };
 
   render() {

@@ -6,6 +6,7 @@
   "dependencies": {
     "@babel/polyfill": "^7.2.5",
     "antd": "^3.12.4",
+    "firebase": "^5.8.6",
     "immutability-helper": "^3.0.0",
     "node-sass": "^4.11.0",
     "react": "^16.7.0",
