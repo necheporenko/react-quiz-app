@@ -4,6 +4,8 @@ import Water1 from '../Icons/elements/Water1.png';
 import ProximaNovaRegular from '../../fonts/ProximaNova/ProximaNova-Regular.ttf';
 import ProximaNovaBold from '../../fonts/ProximaNova/ProximaNova-Bold.ttf';
 
+import { DATA } from './config';
+
 Font.register(`${window.location.origin}/${ProximaNovaBold}`, { family: 'ProximaNova-Bold' });
 Font.register(`${window.location.origin}/${ProximaNovaRegular}`, { family: 'ProximaNova-Regular' });
 
@@ -20,9 +22,10 @@ const PDF = props => {
       </Page> */}
       <Page size="A4" style={styles.page}>
         <Text style={styles.text}>Ваш ведущий соционический тип — ИЭИ (s = 0.14, k = 0.89):</Text>
-        <VerticalGrid />
-        <Text style={styles.text}>Профиль ваших соционических признаков:</Text>
-        <HorizontalGrid />
+        <VerticalGrid config={DATA.socialType} height="250pt" />
+
+        <Text style={[styles.text, { marginTop: 20 }]}>Профиль ваших соционических признаков:</Text>
+        <HorizontalGrid config={DATA.socionicFeatures} />
       </Page>
     </Document>
   );
@@ -30,198 +33,126 @@ const PDF = props => {
 
 export default PDF;
 
-const DATA = {
-  socialType: [40, -80, 80, 20, 30, -60, 40, -80, 80, 20, 30, -60, 40, -80, 80, 20]
-};
-
-const VerticalGrid = () => (
+/*
+ * Vertical Grid
+ */
+const VerticalGrid = ({ config, height }) => (
   <View>
-    <View style={[styles.gridVertical, { height: '250pt' }]}>
+    <View style={[styles.gridVertical, { height: height }]}>
       <View style={styles.gridVerticalY}>
-        <Text>2.5</Text>
-        <Text>2</Text>
-        <Text>1.5</Text>
-        <Text>1</Text>
-        <Text>0.5</Text>
-        <Text>0</Text>
-        <Text>-0.5</Text>
-        <Text>-1</Text>
-        <Text>-1.5</Text>
-        <Text>-2</Text>
-        <Text>-2.5</Text>
+        {config.axisY.map((item, index) => (
+          <Text key={index}>{item}</Text>
+        ))}
       </View>
-      {DATA.socialType.map(item => (
-        <View style={styles.gridVerticalCol}>
+      {config.data.map((item, index) => (
+        <View style={styles.gridVerticalCol} key={index}>
           <View style={styles.gridVerticalColWrap}>
             <View
               style={[
                 styles.gridVerticalColItem,
                 styles.gridVerticalColItemTop,
-                { height: item > 0 ? `${item}%` : 0 }
+                { height: item.real > 0 ? `${item.real}%` : 0 }
               ]}
             />
-            {/* <View style={styles.gridVerticalColItemTopBorder} /> */}
+            {item.ref && item.ref > 0 && (
+              <View style={[styles.gridVerticalColItemTopBorder, { height: `${item.ref}%` }]} />
+            )}
           </View>
           <View style={styles.gridVerticalColWrap}>
             <View
               style={[
                 styles.gridVerticalColItem,
                 styles.gridVerticalColItemBottom,
-                { height: item < 0 ? `${Math.abs(item)}%` : 0 }
+                { height: item.real < 0 ? `${Math.abs(item.real)}%` : 0 }
               ]}
             />
-            {/* <View style={styles.gridVerticalColItemBottomBorder} /> */}
+            {item.ref && item.ref < 0 && (
+              <View
+                style={[
+                  styles.gridVerticalColItemBottomBorder,
+                  { height: `${Math.abs(item.ref)}%` }
+                ]}
+              />
+            )}
           </View>
         </View>
       ))}
     </View>
     <View style={styles.gridVerticalX}>
-      <Text>ИЛЭ</Text>
-      <Text>ИЛЭ</Text>
-      <Text>ИЛЭ</Text>
-      <Text>ИЛЭ</Text>
-      <Text>ИЛЭ</Text>
-      <Text>ИЛЭ</Text>
-      <Text>ИЛЭ</Text>
-      <Text>ИЛЭ</Text>
-      <Text>ИЛЭ</Text>
-      <Text>ИЛЭ</Text>
-      <Text>ИЛЭ</Text>
-      <Text>ИЛЭ</Text>
-      <Text>ИЛЭ</Text>
-      <Text>ИЛЭ</Text>
-      <Text>ИЛЭ</Text>
-      <Text>ИЛЭ</Text>
+      {config.axisX.map((item, index) => (
+        <Text key={index}>{item}</Text>
+      ))}
     </View>
   </View>
 );
 
-const HorizontalGrid = () => (
+/*
+ * Horizontal Grid
+ */
+const HorizontalGrid = ({ config }) => (
   <View>
-    <View style={[styles.gridHorizontal, { height: 104 }]}>
+    <View style={[styles.gridHorizontal, { height: config.data.length * 26 }]}>
       <View style={styles.gridHorizontalCol}>
-        <View style={styles.gridHorizontalColRow}>
-          <Text style={styles.gridHorizontalColRowText}>title</Text>
-        </View>
-        <View style={styles.gridHorizontalColRow}>
-          <Text style={styles.gridHorizontalColRowText}>title</Text>
-        </View>
-        <View style={styles.gridHorizontalColRow}>
-          <Text style={styles.gridHorizontalColRowText}>title</Text>
-        </View>
-        <View style={styles.gridHorizontalColRow}>
-          <Text style={styles.gridHorizontalColRowText}>title</Text>
-        </View>
+        {config.leftLabel.map((item, index) => (
+          <View key={index} style={styles.gridHorizontalColRow}>
+            <Text style={styles.gridHorizontalColRowText}>{item}</Text>
+          </View>
+        ))}
       </View>
 
       <View style={styles.gridHorizontalCol}>
-        <View style={styles.gridHorizontalColRow}>
-          <View
-            style={[
-              styles.gridHorizontalColRowItem,
-              styles.gridHorizontalColRowItemLeft,
-              { width: '90%' }
-            ]}
-          />
-          <View style={[styles.gridHorizontalColRowItemLeftBorder, { width: '50%' }]} />
-        </View>
-        <View style={styles.gridHorizontalColRow}>
-          <View
-            style={[
-              styles.gridHorizontalColRowItem,
-              styles.gridHorizontalColRowItemLeft,
-              { width: '0%' }
-            ]}
-          />
-        </View>
-        <View style={styles.gridHorizontalColRow}>
-          <View
-            style={[
-              styles.gridHorizontalColRowItem,
-              styles.gridHorizontalColRowItemLeft,
-              { width: '30%' }
-            ]}
-          />
-        </View>
-        <View style={styles.gridHorizontalColRow}>
-          <View
-            style={[
-              styles.gridHorizontalColRowItem,
-              styles.gridHorizontalColRowItemLeft,
-              { width: '0%' }
-            ]}
-          />
-        </View>
+        {config.data.map((item, index) => (
+          <View key={index} style={styles.gridHorizontalColRow}>
+            <View
+              style={[
+                styles.gridHorizontalColRowItem,
+                styles.gridHorizontalColRowItemLeft,
+                { width: item.real > 0 ? `${item.real}%` : '0%' }
+              ]}
+            />
+            {item.ref && item.ref > 0 && (
+              <View
+                style={[styles.gridHorizontalColRowItemLeftBorder, { width: `${item.ref}%` }]}
+              />
+            )}
+          </View>
+        ))}
       </View>
 
       <View style={styles.gridHorizontalCol}>
-        <View style={styles.gridHorizontalColRow}>
-          <View
-            style={[
-              styles.gridHorizontalColRowItem,
-              styles.gridHorizontalColRowItemRight,
-              { width: '0%' }
-            ]}
-          />
-          <View style={[styles.gridHorizontalColRowItemRightBorder, { width: '50%' }]} />
-        </View>
-        <View style={styles.gridHorizontalColRow}>
-          <View
-            style={[
-              styles.gridHorizontalColRowItem,
-              styles.gridHorizontalColRowItemRight,
-              { width: '70%' }
-            ]}
-          />
-          <View style={{}} />
-        </View>
-        <View style={styles.gridHorizontalColRow}>
-          <View
-            style={[
-              styles.gridHorizontalColRowItem,
-              styles.gridHorizontalColRowItemRight,
-              { width: '0%' }
-            ]}
-          />
-        </View>
-        <View style={styles.gridHorizontalColRow}>
-          <View
-            style={[
-              styles.gridHorizontalColRowItem,
-              styles.gridHorizontalColRowItemRight,
-              { width: '40%' }
-            ]}
-          />
-        </View>
+        {config.data.map((item, index) => (
+          <View key={index} style={styles.gridHorizontalColRow}>
+            <View
+              style={[
+                styles.gridHorizontalColRowItem,
+                styles.gridHorizontalColRowItemRight,
+                { width: item.real < 0 ? `${Math.abs(item.real)}%` : '0%' }
+              ]}
+            />
+            {item.ref && item.ref < 0 && (
+              <View
+                style={[
+                  styles.gridHorizontalColRowItemRightBorder,
+                  { width: `${Math.abs(item.ref)}%` }
+                ]}
+              />
+            )}
+          </View>
+        ))}
       </View>
 
       <View style={styles.gridHorizontalCol}>
-        <View style={styles.gridHorizontalColRow}>
-          <Text style={[styles.gridHorizontalColRowText, styles.gridHorizontalColRowTextRight]}>
-            title
-          </Text>
-        </View>
-        <View style={styles.gridHorizontalColRow}>
-          <Text style={[styles.gridHorizontalColRowText, styles.gridHorizontalColRowTextRight]}>
-            title
-          </Text>
-        </View>
-        <View style={styles.gridHorizontalColRow}>
-          <Text style={[styles.gridHorizontalColRowText, styles.gridHorizontalColRowTextRight]}>
-            title
-          </Text>
-        </View>
-        <View style={styles.gridHorizontalColRow}>
-          <Text style={[styles.gridHorizontalColRowText, styles.gridHorizontalColRowTextRight]}>
-            title
-          </Text>
-        </View>
+        {config.rightLabel.map((item, index) => (
+          <View key={index} style={styles.gridHorizontalColRow}>
+            <Text style={styles.gridHorizontalColRowText}>{item}</Text>
+          </View>
+        ))}
       </View>
     </View>
     <View style={styles.gridHorizontalX}>
-      <Text>1</Text>
-      <Text>0</Text>
-      <Text>-1</Text>
+      {config.axisX.map((item, index) => (
+        <Text key={index}>{item}</Text>
+      ))}
     </View>
   </View>
 );
