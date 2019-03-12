@@ -5,6 +5,7 @@ import { PDFDownloadLink } from '@react-pdf/renderer';
 
 import Icon from '../../components/Icons';
 import PDF from '../../components/PDF';
+import PDF_Original from './PDF_report.pdf';
 
 import { ANSWER_ARRAY } from '../../contstants';
 
@@ -16,7 +17,8 @@ class Info extends Component {
     iconXs: 'xsFire',
     abbreviation: 'ESTJ',
     title: 'Extraverted Sensing Thinking Judging',
-    type: 'Executive'
+    type: 'Executive',
+    showReactPDF: false
   };
 
   componentDidMount() {
@@ -28,7 +30,8 @@ class Info extends Component {
         iconXs: answer.iconXs,
         abbreviation: answer.abbreviation,
         title: answer.title,
-        type: answer.type
+        type: answer.type,
+        showReactPDF: true
       });
     }
   }
@@ -39,7 +42,7 @@ class Info extends Component {
 
   render() {
     const { isComplitedAllTests } = this.props;
-    const { icon, iconXs, abbreviation, title, type } = this.state;
+    const { icon, iconXs, abbreviation, title, type, showReactPDF } = this.state;
 
     return (
       <div className="info">
@@ -63,19 +66,26 @@ class Info extends Component {
             According to the test results with a probability of {this.getRandomNumber(80, 95)}%.
             Your personality type is {type}.
           </div>
-          {/* <a href={PDF} download="file.pdf">
+          <a href={PDF_Original} download="file.pdf">
             <button className="btn">Download PDF report</button>
-          </a> */}
+          </a>
 
-          <PDFDownloadLink document={<PDF title="Hello PDF" />} fileName="result.pdf">
-            {({ blob, url, loading, error }) =>
-              loading ? (
-                <button className="btn">Creating PDF report...</button>
-              ) : (
-                <button className="btn">Download PDF report</button>
-              )
-            }
-          </PDFDownloadLink>
+          {showReactPDF ? (
+            <PDFDownloadLink
+              document={<PDF title="Hello PDF" abbreviation={abbreviation} />}
+              fileName="result.pdf"
+            >
+              {({ blob, url, loading, error }) =>
+                loading ? (
+                  <button className="btn">Creating PDF report...</button>
+                ) : (
+                  <button className="btn">Download PDF report</button>
+                )
+              }
+            </PDFDownloadLink>
+          ) : (
+            <button className="btn">Download PDF report</button>
+          )}
 
           <div className="info__content__probability">
             The probability of other types according to the test:

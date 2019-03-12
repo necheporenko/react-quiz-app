@@ -4,6 +4,7 @@ import Home from './containers/Home';
 import Test from './containers/Test';
 import Info from './containers/Info';
 import About from './containers/About';
+import Develop from './containers/Develop';
 import Navigation from './components/Navigation';
 
 class App extends Component {
@@ -36,6 +37,7 @@ class App extends Component {
               component={() => <Info isComplitedAllTests={this.state.isComplitedAllTests} />}
             />
             <Route path="/about" component={About} />
+            <Route path="/develop" component={Develop} />
           </div>
 
           <Navigation />
