@@ -5,7 +5,7 @@ import { PDFDownloadLink } from '@react-pdf/renderer';
 
 import Icon from '../../components/Icons';
 import PDF from '../../components/PDF';
-import PDF_Original from './PDF_report.pdf';
+// import PDF_Original from './PDF_report.pdf';
 
 import { ANSWER_ARRAY } from '../../contstants';
 
@@ -66,14 +66,16 @@ class Info extends Component {
             According to the test results with a probability of {this.getRandomNumber(80, 95)}%.
             Your personality type is {type}.
           </div>
-          <a href={PDF_Original} download="file.pdf">
+          {/* <a href={PDF_Original} download="file.pdf">
             <button className="btn">Download PDF report</button>
-          </a>
+          </a> */}
 
           {showReactPDF ? (
             <PDFDownloadLink
-              document={<PDF title="Hello PDF" abbreviation={abbreviation} />}
-              fileName="result.pdf"
+              document={
+                <PDF title="Report" icon={icon} iconXs={iconXs} abbreviation={abbreviation} />
+              }
+              fileName="report.pdf"
             >
               {({ blob, url, loading, error }) =>
                 loading ? (

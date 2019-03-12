@@ -1,13 +1,47 @@
 import React from 'react';
 import { Page, Text, Image, View, Document, StyleSheet, Font } from '@react-pdf/renderer';
-import Water1 from '../Icons/elements/Water1.png';
-import ProximaNovaRegular from '../../fonts/ProximaNova/ProximaNova-Regular.ttf';
-import ProximaNovaBold from '../../fonts/ProximaNova/ProximaNova-Bold.ttf';
 
 import { DATA } from './config';
 
+import Earth from '../Icons/images/elements/earth.png';
+import Fire from '../Icons/images/elements/fire.png';
+import Wind from '../Icons/images/elements/wind.png';
+import Water from '../Icons/images/elements/water.png';
+import EarthXs from '../Icons/images/elements/earthXs.png';
+import FireXs from '../Icons/images/elements/fireXs.png';
+import WaterXs from '../Icons/images/elements/waterXs.png';
+import WindXs from '../Icons/images/elements/windXs.png';
+
+import ProximaNovaRegular from '../../fonts/ProximaNova/ProximaNova-Regular.ttf';
+import ProximaNovaBold from '../../fonts/ProximaNova/ProximaNova-Bold.ttf';
+
 Font.register(`${window.location.origin}/${ProximaNovaBold}`, { family: 'ProximaNova-Bold' });
 Font.register(`${window.location.origin}/${ProximaNovaRegular}`, { family: 'ProximaNova-Regular' });
+
+function getCorrectImage(name) {
+  switch (name) {
+    case 'earth':
+      return Earth;
+    case 'fire':
+      return Fire;
+    case 'water':
+      return Water;
+    case 'wind':
+      return Wind;
+
+    case 'xsEarth':
+      return EarthXs;
+    case 'xsFire':
+      return FireXs;
+    case 'xsWater':
+      return WaterXs;
+    case 'xsWind':
+      return WindXs;
+
+    default:
+      return null;
+  }
+}
 
 // Create Document Component
 const PDF = props => {
@@ -15,8 +49,8 @@ const PDF = props => {
     <Document>
       <Page size="A4" style={styles.page}>
         <View style={styles.imageWrapper}>
-          <Image src={Water1} style={styles.bigIcon} />
-          <Image src={Water1} style={styles.smallIcon} />
+          <Image src={getCorrectImage(props.icon)} style={styles.bigIcon} />
+          <Image src={getCorrectImage(props.iconXs)} style={styles.smallIcon} />
           <Text style={styles.abbreviation}>{props.abbreviation}</Text>
         </View>
       </Page>
@@ -180,7 +214,6 @@ const HorizontalGrid = ({ config }) => (
 // Create styles
 const styles = StyleSheet.create({
   page: {
-    // flexDirection: 'row',
     backgroundColor: '#fff',
     padding: '15 20',
     fontFamily: 'ProximaNova-Regular'
@@ -200,9 +233,7 @@ const styles = StyleSheet.create({
     width: 20,
     height: 20,
     bottom: 15,
-    left: 20,
-    border: '2 solid #fff',
-    borderRadius: 50
+    left: 20
   },
   abbreviation: {
     color: '#2c2e38',
