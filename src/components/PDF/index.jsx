@@ -1018,6 +1018,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#ecf5fc',
     display: 'flex',
     flexDirection: 'row',
+    justifyContent: 'space-between',
     padding: '0 10',
     width: '100%'
   },
@@ -1043,7 +1044,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#ecf5fc',
     position: 'relative',
     flexDirection: 'column',
-    flexGrow: 1
+    flexGrow: 1,
+    maxWidth: 30
   },
   gridVerticalColWrap: {
     height: '50%',
