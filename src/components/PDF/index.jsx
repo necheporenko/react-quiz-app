@@ -13,19 +13,37 @@ Font.register(`${window.location.origin}/${ProximaNovaRegular}`, { family: 'Prox
 const PDF = props => {
   return (
     <Document>
-      {/* <Page size="A4" style={styles.page}>
+      <Page size="A4" style={styles.page}>
         <View style={styles.imageWrapper}>
           <Image src={Water1} style={styles.bigIcon} />
           <Image src={Water1} style={styles.smallIcon} />
           <Text style={styles.abbreviation}>{props.abbreviation}</Text>
         </View>
-      </Page> */}
+      </Page>
       <Page size="A4" style={styles.page}>
         <Text style={styles.text}>Ваш ведущий соционический тип — ИЭИ (s = 0.14, k = 0.89):</Text>
-        <VerticalGrid config={DATA.socialType} height="250pt" />
+        <VerticalGrid config={DATA.socionicType} height="170pt" />
 
-        <Text style={[styles.text, { marginTop: 20 }]}>Профиль ваших соционических признаков:</Text>
+        <Text style={[styles.text, { marginTop: 10 }]}>Профиль ваших соционических признаков:</Text>
         <HorizontalGrid config={DATA.socionicFeatures} />
+
+        <Text style={[styles.text, { marginTop: 10 }]}>Профиль ваших соционических функций:</Text>
+        <VerticalGrid config={DATA.socionicFunctions} height="130pt" />
+
+        <Text style={[styles.text]}>
+          Сравнение с типным профилем эталонного соционического типа ИЭИ:
+        </Text>
+        <VerticalGrid config={DATA.compareSocionicType} height="170pt" />
+
+        <Text style={[styles.text, { marginTop: 10 }]}>
+          Сравнение с профилем признаков эталонного соционического типа ИЭИ:
+        </Text>
+        <HorizontalGrid config={DATA.compareSocionicFeatures} />
+
+        <Text style={[styles.text, { marginTop: 10 }]}>
+          Сравнение с профилем функций эталонного соционического типа ИЭИ:
+        </Text>
+        <VerticalGrid config={DATA.comapareSocionicFunctions} height="130pt" />
       </Page>
     </Document>
   );
@@ -91,7 +109,7 @@ const VerticalGrid = ({ config, height }) => (
  */
 const HorizontalGrid = ({ config }) => (
   <View>
-    <View style={[styles.gridHorizontal, { height: config.data.length * 26 }]}>
+    <View style={[styles.gridHorizontal, { height: config.data.length * 24 }]}>
       <View style={styles.gridHorizontalCol}>
         {config.leftLabel.map((item, index) => (
           <View key={index} style={styles.gridHorizontalColRow}>
@@ -144,7 +162,9 @@ const HorizontalGrid = ({ config }) => (
       <View style={styles.gridHorizontalCol}>
         {config.rightLabel.map((item, index) => (
           <View key={index} style={styles.gridHorizontalColRow}>
-            <Text style={styles.gridHorizontalColRowText}>{item}</Text>
+            <Text style={[styles.gridHorizontalColRowText, styles.gridHorizontalColRowTextRight]}>
+              {item}
+            </Text>
           </View>
         ))}
       </View>
@@ -162,13 +182,8 @@ const styles = StyleSheet.create({
   page: {
     // flexDirection: 'row',
     backgroundColor: '#fff',
-    padding: 20,
+    padding: '15 20',
     fontFamily: 'ProximaNova-Regular'
-  },
-  section: {
-    margin: 10,
-    padding: 10,
-    flexGrow: 1
   },
   imageWrapper: {
     display: 'flex',
@@ -208,7 +223,7 @@ const styles = StyleSheet.create({
     color: '#424242',
     display: 'flex',
     flexDirection: 'row',
-    fontSize: '12',
+    fontSize: '11',
     width: '100%'
   },
   gridHorizontalX: {
@@ -226,13 +241,13 @@ const styles = StyleSheet.create({
     width: '25%'
   },
   gridHorizontalColRow: {
-    height: 26,
+    height: 24,
     borderBottom: '1 solid #dde5ea',
     position: 'relative',
     justifyContent: 'center'
   },
   gridHorizontalColRowItem: {
-    height: 18,
+    height: 16,
     backgroundColor: '#00aff9'
   },
   gridHorizontalColRowItemLeft: {
