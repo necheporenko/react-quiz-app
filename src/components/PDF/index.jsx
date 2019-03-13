@@ -59,7 +59,9 @@ const PDF = props => {
         </View>
       </Page>
       <Page size="A4" style={styles.page}>
-        <Text style={styles.text}>Ваш ведущий соционический тип — ИЭИ (s = 0.14, k = 0.89):</Text>
+        <Text style={styles.text}>{`Ваш ведущий соционический тип — ИЭИ (s = ${DATA.koef.a}, k = ${
+          DATA.koef.b
+        }):`}</Text>
         <VerticalGrid config={DATA.socionicType} height="170pt" />
 
         <Text style={[styles.text, { marginTop: 10 }]}>Профиль ваших соционических признаков:</Text>
@@ -99,56 +101,110 @@ const PDF = props => {
           <View style={{ flexDirection: 'column' }}>
             <View style={styles.categoryText}>
               <Text style={styles.categoryText.title}>Соционический темперамент</Text>
-              <Text>-0.37 линейно-напористый</Text>
-              <Text>-0.78 гибко-разворотливый</Text>
-              <Text style={{ paddingLeft: 3 }}>0.80 восприимчиво-адаптивный</Text>
-              <Text style={{ paddingLeft: 3 }}>0.36 уравновешенно-стабильный</Text>
+              <Text style={{ paddingLeft: DATA.koef.c > 0 ? '3' : '0' }}>{`${
+                DATA.koef.c
+              } линейно-напористый`}</Text>
+              <Text style={{ paddingLeft: DATA.koef.d > 0 ? '3' : '0' }}>{`${
+                DATA.koef.d
+              } гибко-разворотливый`}</Text>
+              <Text style={{ paddingLeft: DATA.koef.e > 0 ? '3' : '0' }}>{`${
+                DATA.koef.e
+              } восприимчиво-адаптивный`}</Text>
+              <Text style={{ paddingLeft: DATA.koef.f > 0 ? '3' : '0' }}>{`${
+                DATA.koef.f
+              } уравновешенно-стабильный`}</Text>
             </View>
             <View style={styles.categoryText}>
               <Text style={styles.categoryText.title}>Вид коммуникабельности</Text>
-              <Text>-1.14 «деловой»</Text>
-              <Text>-0.02 «страстный»</Text>
-              <Text>-0.04 «хладнокровный»</Text>
-              <Text style={{ paddingLeft: 3 }}> 1.20 «душевный»</Text>
+              <Text style={{ paddingLeft: DATA.koef.g > 0 ? '3' : '0' }}>
+                {`${DATA.koef.g} «деловой»`}
+              </Text>
+              <Text style={{ paddingLeft: DATA.koef.h > 0 ? '3' : '0' }}>
+                {`${DATA.koef.h} «страстный»`}
+              </Text>
+              <Text style={{ paddingLeft: DATA.koef.i > 0 ? '3' : '0' }}>
+                {`${DATA.koef.i} «хладнокровный»`}
+              </Text>
+              <Text style={{ paddingLeft: DATA.koef.j > 0 ? '3' : '0' }}>
+                {`${DATA.koef.j} «душевный»`}
+              </Text>
             </View>
             <View style={styles.categoryText}>
               <Text style={styles.categoryText.title}>Стиль аргументации</Text>
-              <Text>-0.55 «реструктор»</Text>
-              <Text style={{ paddingLeft: 3 }}> 0.56 «дипломат»</Text>
-              <Text>-0.64 «конструктор»</Text>
-              <Text style={{ paddingLeft: 3 }}> 0.62 «блюститель»</Text>
+              <Text style={{ paddingLeft: DATA.koef.k > 0 ? '3' : '0' }}>{`${
+                DATA.koef.k
+              } «реструктор»`}</Text>
+              <Text style={{ paddingLeft: DATA.koef.l > 0 ? '3' : '0' }}>{`${
+                DATA.koef.l
+              } «дипломат»`}</Text>
+              <Text style={{ paddingLeft: DATA.koef.m > 0 ? '3' : '0' }}>{`${
+                DATA.koef.m
+              } «конструктор»`}</Text>
+              <Text style={{ paddingLeft: DATA.koef.n > 0 ? '3' : '0' }}>{`${
+                DATA.koef.n
+              } «блюститель»`}</Text>
             </View>
             <View style={styles.categoryText}>
               <Text style={styles.categoryText.title}>Квадральные ценности</Text>
-              <Text>-0.44 семейно-познавательные ценности альфа-квадры</Text>
-              <Text style={{ paddingLeft: 3 }}>0.32 романтико-силовые ценности бета-квадры</Text>
-              <Text style={{ paddingLeft: 3 }}>
-                0.18 либерально-прагматические ценности гамма-квадры
+              <Text style={{ paddingLeft: DATA.koef.o > 0 ? '3' : '0' }}>{`${
+                DATA.koef.o
+              } семейно-познавательные ценности альфа-квадры`}</Text>
+              <Text style={{ paddingLeft: DATA.koef.p > 0 ? '3' : '0' }}>{`${
+                DATA.koef.p
+              } романтико-силовые ценности бета-квадры`}</Text>
+              <Text style={{ paddingLeft: DATA.koef.q > 0 ? '3' : '0' }}>
+                {`${DATA.koef.q} либерально-прагматические ценности гамма-квадры`}
               </Text>
-              <Text> -0.06 гуманно-трудовые ценности дельта-квадры</Text>
+              <Text style={{ paddingLeft: DATA.koef.r > 0 ? '3' : '0' }}>{`${
+                DATA.koef.r
+              } гуманно-трудовые ценности дельта-квадры`}</Text>
             </View>
           </View>
           <View style={{ flexDirection: 'column' }}>
             <View style={styles.categoryText}>
               <Text style={styles.categoryText.title}>Установка на вид деятельности</Text>
-              <Text>-0.37 линейно-напористый</Text>
-              <Text>-0.87 технико-управленческая</Text>
-              <Text style={{ paddingLeft: 3 }}> 0.05 социально-коммуникативная</Text>
-              <Text style={{ paddingLeft: 3 }}> 1.13 гуманитарно-художественная</Text>
+              <Text style={{ paddingLeft: DATA.koef.s > 0 ? '3' : '0' }}>{`${
+                DATA.koef.s
+              } линейно-напористый`}</Text>
+              <Text style={{ paddingLeft: DATA.koef.t > 0 ? '3' : '0' }}>{`${
+                DATA.koef.t
+              } технико-управленческая`}</Text>
+              <Text style={{ paddingLeft: DATA.koef.u > 0 ? '3' : '0' }}>{`${
+                DATA.koef.u
+              } социально-коммуникативная`}</Text>
+              <Text style={{ paddingLeft: DATA.koef.v > 0 ? '3' : '0' }}>{`${
+                DATA.koef.v
+              }гуманитарно-художественная`}</Text>
             </View>
             <View style={styles.categoryText}>
               <Text style={styles.categoryText.title}>Стимул к деятельности</Text>
-              <Text>-0.28 «уникальность»</Text>
-              <Text>-0.88 «статус»</Text>
-              <Text style={{ paddingLeft: 3 }}>1.09 «самоценность»</Text>
-              <Text style={{ paddingLeft: 3 }}> 0.06 «благосостояние»</Text>
+              <Text style={{ paddingLeft: DATA.koef.w > 0 ? '3' : '0' }}>{`${
+                DATA.koef.w
+              } «уникальность»`}</Text>
+              <Text style={{ paddingLeft: DATA.koef.x > 0 ? '3' : '0' }}>{`${
+                DATA.koef.x
+              } «статус»`}</Text>
+              <Text style={{ paddingLeft: DATA.koef.y > 0 ? '3' : '0' }}>{`${
+                DATA.koef.y
+              } «самоценность»`}</Text>
+              <Text style={{ paddingLeft: DATA.koef.z > 0 ? '3' : '0' }}>{`${
+                DATA.koef.z
+              } «благосостояние»`}</Text>
             </View>
             <View style={styles.categoryText}>
               <Text style={styles.categoryText.title}>Стиль перцепции</Text>
-              <Text style={{ paddingLeft: 3 }}>0.39 «ассоциативный»</Text>
-              <Text>-0.38 «коммутативный»</Text>
-              <Text style={{ paddingLeft: 3 }}>0.42 «диссоциативный»</Text>
-              <Text>-0.44 «дистрибутивный»</Text>
+              <Text style={{ paddingLeft: DATA.koef.a > 0 ? '3' : '0' }}>{`${
+                DATA.koef.a
+              } «ассоциативный»`}</Text>
+              <Text style={{ paddingLeft: DATA.koef.b > 0 ? '3' : '0' }}>{`${
+                DATA.koef.b
+              } «коммутативный»`}</Text>
+              <Text style={{ paddingLeft: DATA.koef.c > 0 ? '3' : '0' }}>{`${
+                DATA.koef.c
+              } «диссоциативный»`}</Text>
+              <Text style={{ paddingLeft: DATA.koef.d > 0 ? '3' : '0' }}>{`${
+                DATA.koef.d
+              } «дистрибутивный»`}</Text>
             </View>
           </View>
         </View>

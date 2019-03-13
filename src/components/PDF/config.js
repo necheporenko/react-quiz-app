@@ -1,3 +1,29 @@
+var temp = 0;
+
+const getRandomNumber = (min, max) => {
+  return Math.floor(Math.random() * (max - min)) + min;
+};
+
+const getRandomFixedNumber = (min, max) => {
+  return (Math.random() * (max - min) + min).toFixed(2);
+};
+
+const getRandomData = isRef => {
+  if (isRef) {
+    if (99 > temp > 70 || -70 > temp > -90) {
+      temp = temp + getRandomNumber(-5, 5);
+    } else {
+      temp = temp + getRandomNumber(-29, 29);
+    }
+    console.log(temp);
+
+    return temp;
+  }
+  temp = getRandomNumber(-90, 90);
+
+  return temp;
+};
+
 const socionicFeatures = {
   leftLabel: [
     'интроверт',
@@ -57,42 +83,42 @@ export const DATA = {
       'ЛСЭ'
     ],
     data: [
-      { real: 40, ref: null },
-      { real: -80, ref: null },
-      { real: 80, ref: null },
-      { real: 20, ref: null },
-      { real: 30, ref: null },
-      { real: -60, ref: null },
-      { real: -40, ref: null },
-      { real: -80, ref: null },
-      { real: 80, ref: null },
-      { real: 20, ref: null },
-      { real: 35, ref: null },
-      { real: -65, ref: null },
-      { real: 45, ref: null },
-      { real: -85, ref: null },
-      { real: 85, ref: null },
-      { real: 25, ref: null }
+      { real: getRandomData(), ref: null },
+      { real: getRandomData(), ref: null },
+      { real: getRandomData(), ref: null },
+      { real: getRandomData(), ref: null },
+      { real: getRandomData(), ref: null },
+      { real: getRandomData(), ref: null },
+      { real: getRandomData(), ref: null },
+      { real: getRandomData(), ref: null },
+      { real: getRandomData(), ref: null },
+      { real: getRandomData(), ref: null },
+      { real: getRandomData(), ref: null },
+      { real: getRandomData(), ref: null },
+      { real: getRandomData(), ref: null },
+      { real: getRandomData(), ref: null },
+      { real: getRandomData(), ref: null },
+      { real: getRandomData(), ref: null }
     ]
   },
   socionicFeatures: {
     axisX: [1, 0, -1],
     data: [
-      { real: 80, ref: null },
-      { real: 20, ref: null },
-      { real: -50, ref: null },
-      { real: 60, ref: null },
-      { real: 70, ref: null },
-      { real: -10, ref: null },
-      { real: -20, ref: null },
-      { real: 45, ref: null },
-      { real: 70, ref: null },
-      { real: -80, ref: null },
-      { real: 35, ref: null },
-      { real: -25, ref: null },
-      { real: 65, ref: null },
-      { real: 75, ref: null },
-      { real: -25, ref: null }
+      { real: getRandomData(), ref: null },
+      { real: getRandomData(), ref: null },
+      { real: getRandomData(), ref: null },
+      { real: getRandomData(), ref: null },
+      { real: getRandomData(), ref: null },
+      { real: getRandomData(), ref: null },
+      { real: getRandomData(), ref: null },
+      { real: getRandomData(), ref: null },
+      { real: getRandomData(), ref: null },
+      { real: getRandomData(), ref: null },
+      { real: getRandomData(), ref: null },
+      { real: getRandomData(), ref: null },
+      { real: getRandomData(), ref: null },
+      { real: getRandomData(), ref: null },
+      { real: getRandomData(), ref: null }
     ],
     leftLabel: socionicFeatures.leftLabel,
     rightLabel: socionicFeatures.rightLabel
@@ -101,18 +127,18 @@ export const DATA = {
     axisY: [3, 2, 1, 0, -1, -2, -3],
     axisX: ['БИ', 'ЧИ', 'БС', 'ЧС', 'БЛ', 'ЧЛ', 'БЭ', 'ЧЭ', 'БК', 'ЧК', 'БД', 'ЧД'],
     data: [
-      { real: -60, ref: null },
-      { real: -10, ref: null },
-      { real: 40, ref: null },
-      { real: -20, ref: null },
-      { real: -80, ref: null },
-      { real: -50, ref: null },
-      { real: 70, ref: null },
-      { real: 65, ref: null },
-      { real: -15, ref: null },
-      { real: 95, ref: null },
-      { real: -20, ref: null },
-      { real: -80, ref: null }
+      { real: getRandomData(), ref: null },
+      { real: getRandomData(), ref: null },
+      { real: getRandomData(), ref: null },
+      { real: getRandomData(), ref: null },
+      { real: getRandomData(), ref: null },
+      { real: getRandomData(), ref: null },
+      { real: getRandomData(), ref: null },
+      { real: getRandomData(), ref: null },
+      { real: getRandomData(), ref: null },
+      { real: getRandomData(), ref: null },
+      { real: getRandomData(), ref: null },
+      { real: getRandomData(), ref: null }
     ]
   },
   compareSocionicType: {
@@ -136,42 +162,42 @@ export const DATA = {
       'ЛСЭ'
     ],
     data: [
-      { real: 40, ref: 50 },
-      { real: -80, ref: -70 },
-      { real: 80, ref: 85 },
-      { real: 20, ref: 35 },
-      { real: 30, ref: 10 },
-      { real: -60, ref: -45 },
-      { real: -40, ref: -50 },
-      { real: -80, ref: -40 },
-      { real: 80, ref: 60 },
-      { real: 20, ref: 40 },
-      { real: 35, ref: 45 },
-      { real: -65, ref: -40 },
-      { real: 45, ref: 55 },
-      { real: -85, ref: -75 },
-      { real: 85, ref: 80 },
-      { real: 25, ref: 40 }
+      { real: getRandomData(), ref: getRandomData(true) },
+      { real: getRandomData(), ref: getRandomData(true) },
+      { real: getRandomData(), ref: getRandomData(true) },
+      { real: getRandomData(), ref: getRandomData(true) },
+      { real: getRandomData(), ref: getRandomData(true) },
+      { real: getRandomData(), ref: getRandomData(true) },
+      { real: getRandomData(), ref: getRandomData(true) },
+      { real: getRandomData(), ref: getRandomData(true) },
+      { real: getRandomData(), ref: getRandomData(true) },
+      { real: getRandomData(), ref: getRandomData(true) },
+      { real: getRandomData(), ref: getRandomData(true) },
+      { real: getRandomData(), ref: getRandomData(true) },
+      { real: getRandomData(), ref: getRandomData(true) },
+      { real: getRandomData(), ref: getRandomData(true) },
+      { real: getRandomData(), ref: getRandomData(true) },
+      { real: getRandomData(), ref: getRandomData(true) }
     ]
   },
   compareSocionicFeatures: {
     axisX: [1, 0, -1],
     data: [
-      { real: 80, ref: 90 },
-      { real: 20, ref: 30 },
-      { real: -50, ref: -40 },
-      { real: 60, ref: 50 },
-      { real: 70, ref: 60 },
-      { real: -10, ref: -20 },
-      { real: -20, ref: 30 },
-      { real: 45, ref: 40 },
-      { real: 70, ref: 60 },
-      { real: -80, ref: -65 },
-      { real: 35, ref: 45 },
-      { real: -25, ref: -35 },
-      { real: 65, ref: 80 },
-      { real: 75, ref: 60 },
-      { real: -25, ref: -35 }
+      { real: getRandomData(), ref: getRandomData(true) },
+      { real: getRandomData(), ref: getRandomData(true) },
+      { real: getRandomData(), ref: getRandomData(true) },
+      { real: getRandomData(), ref: getRandomData(true) },
+      { real: getRandomData(), ref: getRandomData(true) },
+      { real: getRandomData(), ref: getRandomData(true) },
+      { real: getRandomData(), ref: getRandomData(true) },
+      { real: getRandomData(), ref: getRandomData(true) },
+      { real: getRandomData(), ref: getRandomData(true) },
+      { real: getRandomData(), ref: getRandomData(true) },
+      { real: getRandomData(), ref: getRandomData(true) },
+      { real: getRandomData(), ref: getRandomData(true) },
+      { real: getRandomData(), ref: getRandomData(true) },
+      { real: getRandomData(), ref: getRandomData(true) },
+      { real: getRandomData(), ref: getRandomData(true) }
     ],
     leftLabel: socionicFeatures.leftLabel,
     rightLabel: socionicFeatures.rightLabel
@@ -180,18 +206,46 @@ export const DATA = {
     axisY: [3, 2, 1, 0, -1, -2, -3],
     axisX: ['БИ', 'ЧИ', 'БС', 'ЧС', 'БЛ', 'ЧЛ', 'БЭ', 'ЧЭ', 'БК', 'ЧК', 'БД', 'ЧД'],
     data: [
-      { real: -60, ref: -70 },
-      { real: -10, ref: -20 },
-      { real: 40, ref: 45 },
-      { real: -20, ref: -25 },
-      { real: -80, ref: -20 },
-      { real: -50, ref: -45 },
-      { real: 70, ref: 75 },
-      { real: 65, ref: 60 },
-      { real: -15, ref: -30 },
-      { real: 95, ref: 75 },
-      { real: -20, ref: -24 },
-      { real: -80, ref: -65 }
+      { real: getRandomData(), ref: getRandomData(true) },
+      { real: getRandomData(), ref: getRandomData(true) },
+      { real: getRandomData(), ref: getRandomData(true) },
+      { real: getRandomData(), ref: getRandomData(true) },
+      { real: getRandomData(), ref: getRandomData(true) },
+      { real: getRandomData(), ref: getRandomData(true) },
+      { real: getRandomData(), ref: getRandomData(true) },
+      { real: getRandomData(), ref: getRandomData(true) },
+      { real: getRandomData(), ref: getRandomData(true) },
+      { real: getRandomData(), ref: getRandomData(true) },
+      { real: getRandomData(), ref: getRandomData(true) },
+      { real: getRandomData(), ref: getRandomData(true) }
     ]
+  },
+  koef: {
+    a: getRandomFixedNumber(-1, 1),
+    b: getRandomFixedNumber(-1, 1),
+    c: getRandomFixedNumber(-1, 1),
+    d: getRandomFixedNumber(-1, 1),
+    e: getRandomFixedNumber(-1, 1),
+    f: getRandomFixedNumber(-1, 1),
+    g: getRandomFixedNumber(-1, 1),
+    h: getRandomFixedNumber(-1, 1),
+    i: getRandomFixedNumber(-1, 1),
+    j: getRandomFixedNumber(-1, 1),
+    k: getRandomFixedNumber(-1, 1),
+    l: getRandomFixedNumber(-1, 1),
+    m: getRandomFixedNumber(-1, 1),
+    n: getRandomFixedNumber(-1, 1),
+    o: getRandomFixedNumber(-1, 1),
+    p: getRandomFixedNumber(-1, 1),
+    q: getRandomFixedNumber(-1, 1),
+    r: getRandomFixedNumber(-1, 1),
+    s: getRandomFixedNumber(-1, 1),
+    t: getRandomFixedNumber(-1, 1),
+    u: getRandomFixedNumber(-1, 1),
+    v: getRandomFixedNumber(-1, 1),
+    w: getRandomFixedNumber(-1, 1),
+    x: getRandomFixedNumber(-1, 1),
+    y: getRandomFixedNumber(-1, 1),
+    z: getRandomFixedNumber(-1, 1)
   }
 };
