@@ -11,11 +11,14 @@ const getRandomFixedNumber = (min, max) => {
 const getRandomData = isRef => {
   if (isRef) {
     if (99 > temp > 70 || -70 > temp > -90) {
-      temp = temp + getRandomNumber(-5, 5);
+      temp = +temp + +getRandomNumber(-5, 5);
     } else {
-      temp = temp + getRandomNumber(-29, 29);
+      temp = +temp + +getRandomNumber(-29, 29);
     }
-    console.log(temp);
+
+    if (temp === 0) {
+      temp = temp + 1;
+    }
 
     return temp;
   }
@@ -62,6 +65,7 @@ const socionicFeatures = {
 };
 
 export const DATA = {
+  isGot: true,
   socionicType: {
     axisY: [2.5, 2, 1.5, 1, 0.5, 0, -0.5, -1, -1.5, -2, -2.5],
     axisX: [
