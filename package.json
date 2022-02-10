@@ -9,7 +9,7 @@
     "antd": "^3.12.4",
     "firebase": "^5.8.6",
     "immutability-helper": "^3.0.0",
-    "node-sass": "^4.11.0",
+    "node-sass": "^7.0.0",
     "react": "^16.7.0",
     "react-app-polyfill": "^0.2.1",
     "react-dom": "^16.7.0",
